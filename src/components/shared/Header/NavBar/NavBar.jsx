@@ -1,6 +1,6 @@
 import { NavBarBox, NavItem } from "./style";
 
-export const NavBar = ({}) => {
+export const NavBar = () => {
   const navItems = [
     "홈",
     "추천",
