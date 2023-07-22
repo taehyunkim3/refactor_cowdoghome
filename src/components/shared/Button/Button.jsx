@@ -4,7 +4,7 @@ import { ButtonStyle } from "./ButtonStyle";
  * @param {string} label - 버튼 이름
  * @param {string} theme - filled / empty / gray
  * @param {string} size - small / large
- * @param {string} b - [선택] 넣을 경우 font-weight: 700
+ * @param {string} b - [선택] 넣을 경우 굵은 글씨
  */
 export const Button = ({
   label = "label",

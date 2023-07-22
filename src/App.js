@@ -1,16 +1,4 @@
-import {
-  Button,
-  GrayBtn,
-  WriteBtn,
-  BuyBtn,
-  BucketBtn,
-  LoginBtn,
-  EmailBtn,
-  SignUpBtn,
-  AskBtn,
-} from "./components/shared/Button";
-import { WhiteButton } from "./components/shared/ButtonStyle";
-import { FlexButton } from "./components/shared/FlexButton/FlexButton";
+import { Button, Selector } from "./components";
 import "./reset.css";
 import { GlobalStyle } from "./style/GlobalStyle";
 
@@ -18,133 +6,38 @@ export const App = () => {
   return (
     <>
       <GlobalStyle />
-      <FlexButton $background="filled" $line="thin">
-        hihihihihi
-      </FlexButton>
-      <div style={{ paddingTop: 20 }}>잉메일 버튼</div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          border: "1px solid black",
-        }}
-      >
-        <div style={{ backgroundColor: "" }}></div>
-        <FlexButton>test</FlexButton>
-      </div>
+      <Selector
+        title="선택"
+        options={[
+          "피그먼트 모듈 소파 3인용(1,280,000원)",
+          "피그먼트 모듈 소파 4인용(1,780,000원)",
+          "피그먼트 모듈 소파 코너형 6인용(2,380,000원)",
+          "피그먼트 모듈 소파 3인용 코너형(1,880,000원)",
+        ]}
+        focus
+      ></Selector>
+      <br />
+      <Selector
+        title="선택"
+        options={[
+          "피그먼트 모듈 소파 3인용(1,280,000원)",
+          "피그먼트 모듈 소파 4인용(1,780,000원)",
+          "피그먼트 모듈 소파 코너형 6인용(2,380,000원)",
+          "피그먼트 모듈 소파 3인용 코너형(1,880,000원)",
+        ]}
+      ></Selector>
 
-      <div style={{ paddingTop: 20 }}>잉메일 버튼</div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          border: "1px solid black",
-        }}
-      >
-        <div style={{ backgroundColor: "" }}></div>
-        <FlexButton $background="filled" $line="thin">
-          dfsdfasdasdasdasdasd
-        </FlexButton>
-      </div>
-
-      <div style={{ margin: 100, border: "1px solid red" }}>
-        <div>반응형</div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            border: "1px solid black",
-          }}
-        >
-          <div style={{ flex: 1, backgroundColor: "blue" }}></div>
-          <Button>asdf</Button>
+      {/* <div style={{ display: "flex" }}>
+        <div style={{ flex: 1 }}>
+          <Button label="test" theme="filled" size="small" />
         </div>
-
-        <div style={{ paddingTop: 20 }}>회색고정버튼</div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            border: "1px solid black",
-          }}
-        >
-          <div style={{ backgroundColor: "blue" }}></div>
-          <GrayBtn>asdf</GrayBtn>
+        <div style={{ flex: 1 }}>
+          <Button label="test" theme="empty" size="small" b />
         </div>
-
-        <div style={{ paddingTop: 20 }}>글쓰기 버튼</div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            border: "1px solid black",
-          }}
-        >
-          <div style={{ backgroundColor: "" }}></div>
-          <WriteBtn>글쓰기</WriteBtn>
+        <div style={{ flex: 1 }}>
+          <Button label="test" theme="gray" size="large" />
         </div>
-
-        <div style={{ paddingTop: 20 }}>구매하기 버튼</div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            border: "1px solid black",
-          }}
-        >
-          <BuyBtn>구매하기</BuyBtn>
-          <BucketBtn>장바구기</BucketBtn>
-        </div>
-
-        <div style={{ paddingTop: 20 }}>로그인 버튼</div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            border: "1px solid black",
-          }}
-        >
-          <div style={{ backgroundColor: "" }}></div>
-          <LoginBtn>로그인</LoginBtn>
-        </div>
-
-        <div style={{ paddingTop: 20 }}>회원가입 버튼</div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            border: "1px solid black",
-          }}
-        >
-          <div style={{ backgroundColor: "" }}></div>
-          <SignUpBtn>회원가입</SignUpBtn>
-        </div>
-
-        <div style={{ paddingTop: 20 }}>잉메일 버튼</div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            border: "1px solid black",
-          }}
-        >
-          <div style={{ backgroundColor: "" }}></div>
-          <EmailBtn>이메일 인증하기</EmailBtn>
-        </div>
-
-        <div style={{ paddingTop: 20 }}>구매하기 버튼</div>
-        <div
-          style={{
-            display: "flex",
-            border: "1px solid black",
-          }}
-        >
-          <WhiteButton style={{ flex: 1 }}>우링리우리</WhiteButton>
-          <AskBtn style={{ flex: 1 }}>문의하기</AskBtn>
-        </div>
-
-        <div>df</div>
-      </div>
+      </div> */}
     </>
   );
 };
