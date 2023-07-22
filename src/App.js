@@ -5,6 +5,7 @@ import {
   ItemImage,
   RoundButton,
   SelectedItemBox,
+  Footer, Header
 } from "./components";
 import "./reset.css";
 
