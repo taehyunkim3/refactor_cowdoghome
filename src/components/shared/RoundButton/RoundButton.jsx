@@ -1,6 +1,6 @@
 import { RoundButtonLayout } from "./style";
 
-/***
+/**
  * @param {string} href - 버튼 링크
  * @param {string} color - 버튼 색상 (blue, red, yellow, gray, transparent)
  * @param {string} size - 버튼 크기 (small, medium)

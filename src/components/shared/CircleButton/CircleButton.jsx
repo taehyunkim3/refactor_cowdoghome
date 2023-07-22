@@ -6,8 +6,7 @@ import {
 import { GoBookmark, GoShareAndroid } from "react-icons/go";
 import { AiOutlineHeart, AiOutlineArrowUp } from "react-icons/ai";
 import { SlBubble } from "react-icons/sl";
-/***
-
+/**
  * @param {string} icon - 버튼 아이콘 (ArrowRight, Bookmark, Heart, List, ArrowUp, Bubble, Share)
  * @param {string} type - 버튼 타입 (default, gray, outline)
  * 선택 속성 사용시 버튼타입은 비우고 사용

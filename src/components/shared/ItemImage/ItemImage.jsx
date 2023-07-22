@@ -1,6 +1,6 @@
 import { ItemImageLayer } from "./style";
 
-/***
+/**
  * @param {string} type - 아이템 이미지 타입 (HouseItem, ShoppingItemSelect, ShoppingItemMain)
  * ShoppingItemMain은 사이즈가 100%로 고정되어 있습니다.
  * @param {string} imgUrl - [선택] 아이템 이미지 url

@@ -5,7 +5,7 @@ import {
   StItemBubbleText,
 } from "./style";
 import { HiChevronRight } from "react-icons/hi";
-/***
+/**
  * @param {string} imageUrl - 아이템 이미지 url
  * @param {string} xPosition - 아이템 이미지 x축 위치 (px, rem, %)
  * @param {string} yPosition - 아이템 이미지 y축 위치
