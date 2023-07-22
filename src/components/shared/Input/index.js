@@ -1,4 +1,8 @@
-export const Index = ({}) => {
+import { Input, InputBox } from "./style";
 
- return <div>Index</div>;
+export const Index = () => {
+
+ return <InputBox>
+  <Input/>
+ </InputBox>;
 };
