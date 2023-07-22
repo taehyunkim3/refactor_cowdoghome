@@ -1,4 +1,4 @@
-import { InputContainer, TransparentBtn } from "./components";
+import { Header } from "./components";
 import "./reset.css";
 import { GlobalStyle } from "./style/GlobalStyle";
 
@@ -6,8 +6,7 @@ export const App = () => {
   return (
     <>
       <GlobalStyle />
-      <TransparentBtn />
-      <InputContainer />
+      <Header />
     </>
   );
 };
