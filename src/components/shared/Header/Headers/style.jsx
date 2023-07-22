@@ -16,7 +16,6 @@ export const HeaderBox = styled.div`
   @media (max-width: 768px) {
     height: calc(3.125em - 0.063em); // mobile
     padding: 0.1em;
-    justify-content: center;
   }
 `;
 
