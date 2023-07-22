@@ -1,5 +1,12 @@
 import { styled } from "styled-components";
 
+export const HeaderContainer = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+`;
+
+
 export const HeaderBox = styled.div`
   width: 100%;
   height: calc(5em - 0.063em); // 기본 web
@@ -10,7 +17,6 @@ export const HeaderBox = styled.div`
   padding: 0 1em;
   box-sizing: content-box;
   line-height: 0;
-  position: fixed;
   transition: top 0.1s ease 0s;
   border-bottom: 0.063em solid rgb(234, 237, 239);
 
