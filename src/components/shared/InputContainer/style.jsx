@@ -16,12 +16,15 @@ export const InputBox = styled.div`
     border: 1px solid ${(props) => (props.error ? "#FF7777" : "#dadde0")};
     box-shadow: ${(props) => (props.isFocused ? "0 0 0 2px #2fb8eb" : "none")};
     border-radius: 0.25em;
+    display: flex;
+    align-items: center;
   }
 `;
 
 export const Input = styled.input`
   width: 100%;
   height: 100%;
+  flex-grow: 1;
   box-sizing: border-box;
   border: none;
   padding: 0.8125em 0.9375em 0.875em;

@@ -8,9 +8,17 @@ import { Input, InputBox } from "./style";
  * @param {string} props.height - 입력 박스의 높이 (픽셀 단위)
  * @param {string} props.type - 입력 필드의 타입
  * @param {string} props.placeholder - 입력 필드의 플레이스홀더
+ * @param {React.ReactNode} props.children - 입력 필드 앞에 표시될 요소 (예: 아이콘)
  */
 
-export const InputContainer = ({ error, width, height, type, placeholder }) => {
+export const InputContainer = ({
+  error,
+  width,
+  height,
+  type,
+  placeholder,
+  children,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const emWidth = width ? `${parseInt(width) / 16}em` : "18.75em";
@@ -27,6 +35,7 @@ export const InputContainer = ({ error, width, height, type, placeholder }) => {
       isFocused={isFocused}
     >
       <label>
+        {children}
         <Input
           type={type}
           placeholder={placeholder}
