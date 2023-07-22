@@ -85,7 +85,6 @@ export const CircleButton = ({
       >
         <Icon />
       </CircleButtonLayer>
-      CircleButton
     </>
   );
 };

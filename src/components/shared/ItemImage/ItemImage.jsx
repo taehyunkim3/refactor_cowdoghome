@@ -10,7 +10,7 @@ import { ItemImageLayer } from "./style";
  *
  */
 export const ItemImage = ({
-  type = "ShoppingItemMain",
+  type = "",
   imgUrl = "https://image.ohou.se/i/bucketplace-v2-development/uploads/users/profile_images/1689916282_naver_f33c08c20b06c9cb1451a01a8a2c5fa83fe135b6b25cec652fa8a06382c0a934.jpg?w=72&h=72&c=c&webp=1",
   roundSize = "0px",
   size = "100px",
