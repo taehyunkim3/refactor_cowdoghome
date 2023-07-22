@@ -19,6 +19,15 @@ export const HeaderBox = styled.div`
   }
 `;
 
+export const LogoContainer = styled.div`
+  position: absolute;
+  left: 3.75em;
+  z-index: 9999;
+  @media (max-width: 768px) {
+    position: static;
+  }
+`;
+
 export const ButtonBox = styled.div`
   display: flex;
   align-items: center;
@@ -54,12 +63,8 @@ export const SignBtn = styled.button`
   }
 `;
 
-export const PostBtn = styled.button`
-  width: 94.64px;
-  height: 40px;
-  @media (max-width: 768px) {
-    width: 5.5em;
-  }
+export const PostButtonBox = styled.div`
+  width: ${({ width }) => width || "auto"};
 `;
 
 export const iconStyle = {
