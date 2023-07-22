@@ -7,7 +7,7 @@ export const HeaderBox = styled.div`
   align-items: center;
   justify-content: space-around;
   text-align: center;
-  padding: 0 1em;
+  padding: 0 3.75em;
   box-sizing: content-box;
   line-height: 0;
   transition: top 0.1s ease 0s;
