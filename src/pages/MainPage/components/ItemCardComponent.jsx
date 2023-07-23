@@ -10,38 +10,6 @@ export const ItemCardWrapper = styled.div`
   border: 1px solid black;
 `;
 
-export const ItemCard = styled.div``;
-
-export const Article = styled.article``;
-
-export const ProfileWrapper = styled.div``;
-
-export const Address = styled.address``;
-
-export const FlexDiv = styled.div``;
-
-export const UserProfile = styled.a``;
-
-export const UserImage = styled.img``;
-
-export const UserName = styled.span``;
-
-export const Introduction = styled.p``;
-
-export const ImageAndBtnsWrapper = styled.div``;
-
-export const DetailLink = styled.a``;
-
-export const ImageWrapper = styled.div``;
-
-export const Image = styled.img``;
-
-export const BottomBtns = styled.aside``;
-
-export const Btn = styled.button``;
-
-export const BtnCounter = styled.span``;
-
 export const ItemCardComponent = ({
   nickname,
   introduction,
