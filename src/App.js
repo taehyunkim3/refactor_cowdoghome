@@ -1,24 +1,12 @@
-import {
-  CircleButton,
-  CircleImage,
-  ItemDetailBubble,
-  ItemImage,
-  RoundButton,
-  SelectedItemBox,
-} from "./components";
+import { HouseDetailPage } from "./pages";
 import "./reset.css";
 import { GlobalStyle } from "./style/GlobalStyle";
 
 export const App = () => {
   return (
     <>
+      <HouseDetailPage />
       <GlobalStyle />
-      <CircleImage />
-      <ItemImage />
-      <CircleButton />
-      <RoundButton />
-      <ItemDetailBubble />
-      <SelectedItemBox />
     </>
   );
 };
