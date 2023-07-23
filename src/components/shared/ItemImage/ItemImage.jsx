@@ -41,6 +41,7 @@ export const ItemImage = ({
         size={size.toLowerCase()}
         round={roundSize}
         isHover={isHover}
+        type={type.toUpperCase()}
       >
         <img src={imgUrl} alt="itemImage" />
       </ItemImageLayer>
