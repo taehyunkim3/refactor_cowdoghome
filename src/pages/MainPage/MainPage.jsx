@@ -1,10 +1,10 @@
 import { MainPageLayout } from "./layout";
-import { MainItemView } from "./view";
+import { MainContainer } from "./container";
 
 export const MainPage = ({}) => {
   return (
     <MainPageLayout>
-      <MainItemView />
+      <MainContainer />
     </MainPageLayout>
   );
 };

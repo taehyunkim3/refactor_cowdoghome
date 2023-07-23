@@ -30,7 +30,7 @@ export const ItemImage = ({
     case "ShoppingItemMain":
       roundSize = "6px";
       size = "100%";
-      isHover = false;
+      isHover = true;
       break;
     default:
   }
