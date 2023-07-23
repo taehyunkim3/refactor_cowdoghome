@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import ProtectedRoute from "./ProtectedRoute";
-import { MainPage } from "../pages";
+import { HouseDetailPage, MainPage, PostPage } from "../pages";
 
 export const Router = () => {
   return (
@@ -9,7 +9,8 @@ export const Router = () => {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<h1>Login</h1>} />
         <Route path="/signup" element={<h1>Signup</h1>} />
-        <Route path="/house/:houseId" element={<h1>HouseDetail</h1>} />
+        <Route path="/house/:houseId" element={<HouseDetailPage />} />
+        <Route path="/house/post" element={<PostPage />} />
         {/* <Route
           path="/house/post"
           element={<ProtectedRoute element={<h1>HousePost</h1>} />}

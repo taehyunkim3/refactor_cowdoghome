@@ -6,6 +6,8 @@ import {
   ItemDetailBubble,
   ItemImage,
 } from "../../components";
+import { UserProfileContainer } from "./components";
+import { HrWithCounter } from "./components/HrWithCounter/HrWithCounter"; //이거는 무슨의미인지 모르겠음
 import {
   CommonLayout,
   HouseDetailPageLayout,
@@ -17,6 +19,7 @@ import {
   OnPosition,
   ContentText,
 } from "./style";
+import ReactMarkdown from "react-markdown";
 
 export const HouseDetailPage = ({}) => {
   return (
@@ -59,8 +62,17 @@ export const HouseDetailPage = ({}) => {
                   </li>
                 </ul>
               </RelatedItems>
-              <ContentText>sdffdfsdfsdf</ContentText>
+              <ContentText>
+                <ReactMarkdown>
+                  {
+                    "베이킹은 제대로 배워본 적이 없어서 \n죽부터 하기는 힘들었기에 냉동 생지를 이용하니 훨씬 편했어요"
+                  }
+                </ReactMarkdown>
+              </ContentText>
             </MainImageContainer>
+
+            <HrWithCounter />
+            <UserProfileContainer />
           </MainLayoutInner>
         </MainLayout>
         <Footer />

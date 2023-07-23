@@ -89,13 +89,14 @@ export const RelatedItems = styled.div`
   }
 `;
 
-export const ContentText = styled.div`
-  margin-top: 40px;
-  padding: 0px;
+export const ContentText = styled.p`
   margin: 24px 0px;
   padding: 0px 16px;
   font-size: 16px;
   line-height: 24px;
   color: rgb(47, 52, 56);
   white-space: pre-line;
+  letter-spacing: -0.4px;
+  word-break: keep-all;
+  word-wrap: break-word;
 `;
