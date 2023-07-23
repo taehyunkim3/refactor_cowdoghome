@@ -1,0 +1,22 @@
+export const ItemCardWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+
+  @media (min-width: 1024px) {
+    margin-right: -10px;
+    margin-left: -10px;
+  }
+
+  @media (min-width: 768px) {
+    margin-right: -7.5px;
+    margin-left: -7.5px;
+  }
+
+  @media (min-width: 375px) {
+    margin-right: -5px;
+    margin-left: -5px;
+  }
+`;
+
+

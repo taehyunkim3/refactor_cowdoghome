@@ -1,13 +1,14 @@
-import {
-  CircleButton,
-  CircleImage,
-  ItemDetailBubble,
-  ItemImage,
-  RoundButton,
-  SelectedItemBox,
-} from "./components";
+import { ThemeProvider } from "styled-components";
 import "./reset.css";
+import { Router } from "./routes";
+import { theme } from "./style";
 
 export const App = () => {
-  return <></>;
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <Router />
+      </ThemeProvider>
+    </>
+  );
 };
