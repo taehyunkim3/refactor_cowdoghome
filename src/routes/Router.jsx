@@ -1,12 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
+import { LoginPage } from "../components";
 
 export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/login" element={<h1>Login</h1>} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<h1>Signup</h1>} />
         <Route path="/house/:houseId" element={<h1>HouseDetail</h1>} />
         <Route
