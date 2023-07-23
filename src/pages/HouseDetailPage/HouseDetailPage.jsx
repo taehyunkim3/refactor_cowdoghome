@@ -1,13 +1,17 @@
+import { Button, CircleButton, Footer, Header } from "../../components";
 import { HouseDetailPageLayout, MainLayout } from "./style";
 
 export const HouseDetailPage = ({}) => {
   return (
-    <HouseDetailPageLayout>
-      <div>navbar</div>
-      <header>header</header>
-      <MainLayout>
-        <div>main</div>
-      </MainLayout>
-    </HouseDetailPageLayout>
+    <>
+      <Header />
+      <HouseDetailPageLayout>
+        <MainLayout>
+          <CircleButton icon="plus" type="small" />
+          <div>main</div>
+        </MainLayout>
+      </HouseDetailPageLayout>
+      <Footer />
+    </>
   );
 };

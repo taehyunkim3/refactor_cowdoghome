@@ -16,4 +16,5 @@ export const CircleButtonLayer = styled.button`
     border-radius: 100%;
     box-shadow: ${(prop) => (prop.shadow ? "0 2px 5px rgba(63, 71, 77, 0.15);" : "none")};
     color: ${(prop) => (prop.color)};
+    padding:0;
 `;

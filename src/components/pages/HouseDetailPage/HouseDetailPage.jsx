@@ -1,3 +1,7 @@
 export const HouseDetailPage = ({}) => {
-  return <></>;
+  return (
+    <>
+      <div>navbar</div>
+    </>
+  );
 };
