@@ -1,6 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+
+* {
+  box-sizing: border-box;
+}
+
 body{
   -webkit-font-smoothing: antialiased;
 
@@ -18,5 +23,19 @@ body{
     font-weight: normal;
     font-style: normal;
   }
+
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  border: none;
+  color: inherit;
+  text-decoration: none;
 }
 `;

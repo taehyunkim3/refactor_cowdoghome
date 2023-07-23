@@ -63,9 +63,13 @@ export const OnPosition = styled.div`
   top: ${(props) => props.top};
   left: ${(props) => props.left};
   margin: ${(props) => props.margin};
+  .bubble {
+    margin: 15px;
+  }
 `;
 
 export const RelatedItems = styled.div`
+  margin-top: 16px;
   position: relative;
   z-index: 0;
   ul {
@@ -83,4 +87,15 @@ export const RelatedItems = styled.div`
     flex-shrink: 0;
     scroll-snap-align: start;
   }
+`;
+
+export const ContentText = styled.div`
+  margin-top: 40px;
+  padding: 0px;
+  margin: 24px 0px;
+  padding: 0px 16px;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgb(47, 52, 56);
+  white-space: pre-line;
 `;
