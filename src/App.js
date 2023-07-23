@@ -4,13 +4,17 @@ import { Router } from "./routes";
 import { theme } from "./style";
 import { Provider } from "react-redux";
 import { store } from "./redux";
+import { GlobalStyle } from "./style/GlobalStyle";
 
 export const App = () => {
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <Router />
-      </ThemeProvider>
-    </Provider>
+    <>
+      <GlobalStyle />
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Router />
+        </ThemeProvider>
+      </Provider>
+    </>
   );
 };

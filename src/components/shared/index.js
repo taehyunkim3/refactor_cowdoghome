@@ -1,4 +1,7 @@
-
+export * from "./InputContainer";
+export * from "./TransparentBtn";
+export * from "./Header";
+export * from "./Footer";
 export * from "./Button";
 export * from "./Selector";
 export * from './CircleButton'
