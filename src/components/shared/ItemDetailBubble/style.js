@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 export const ItemDetailBubbleLayout = styled.div`
 position: absolute;
 inset: auto auto 0px 0px;
-transform: translate( ${(prop) => (prop.xPosition)},  ${(prop) => (prop.yPosition)});
 
 width: 320px;
 box-sizing: border-box;
