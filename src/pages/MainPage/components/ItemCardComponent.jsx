@@ -10,6 +10,27 @@ export const ItemCardWrapper = styled.div`
   border: 1px solid black;
 `;
 
+export const MainImage = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+export const ProfileImage = styled.img`
+  width: 40px;
+  border-radius: 999px;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.6;
+  }
+`;
+
 export const ItemCardComponent = ({
   nickname,
   introduction,
@@ -25,7 +46,7 @@ export const ItemCardComponent = ({
     >
       <div style={{ display: "flex", gap: 8, paddingBottom: 12 }}>
         <div>
-          <img src={profileImage} style={{ borderRadius: 999, width: 40 }} />
+          <ProfileImage src={profileImage} />
         </div>
         <div
           style={{
@@ -35,15 +56,25 @@ export const ItemCardComponent = ({
             justifyContent: "space-around",
           }}
         >
-          <div>{nickname}</div>
-          <div>{introduction}</div>
+          <div
+            style={{ fontSize: 15, fontWeight: 500, fontFamily: "Jal_Haru" }}
+          >
+            {nickname}
+          </div>
+          <div
+            style={{
+              fontSize: 12,
+              fontWeight: 400,
+              color: "#757575",
+              fontFamily: "Jal_Haru",
+            }}
+          >
+            {introduction}
+          </div>
         </div>
       </div>
-      <div style={{ flex: 1 }}>
-        <img
-          src={contentImage}
-          style={{ width: "100%", height: "100%", borderRadius: 8 }}
-        />
+      <div style={{ flex: 1, overflow: "hidden", borderRadius: 8 }}>
+        <MainImage src={contentImage} />
       </div>
       <div
         style={{

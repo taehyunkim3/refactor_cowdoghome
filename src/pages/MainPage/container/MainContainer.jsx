@@ -682,7 +682,6 @@ const test = [
 export const MainContainer = ({}) => {
   const dispatch = useDispatch();
   const pageIndex = useSelector((state) => state.pageIndex);
-  console.log(pageIndex);
 
   const { ref, inView } = useInView({
     threshold: 0,

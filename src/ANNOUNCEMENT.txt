@@ -1,0 +1,5 @@
+RoundButton.jsx의 color에 bgColor : 'lightGray' 추가
+lightGray일 경우에만 fontSize 가 13px로 변하도록 수정 (lightGray선택하지 않을 시에는 기존 속성 변화 없음)
+
+reset.css에서 font: inherit; 제거
+- 이유: b태그 오작동

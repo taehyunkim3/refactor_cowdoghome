@@ -12,9 +12,10 @@ export const Header = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
-  padding: 0 100px;
+  gap: 30px;
+  padding: 0 5%;
+  margin-top: 40px;
+  margin-bottom: 40px;
 `;
 
 export const Footer = styled.div`

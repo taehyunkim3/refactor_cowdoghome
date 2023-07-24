@@ -1,9 +1,10 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  margin: 15px;
 `;
 
 export const Header = styled.div`
@@ -14,10 +15,4 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  padding: 0 100px;
-`;
-
-export const Footer = styled.div`
-  background-color: #f6e8ea;
-  padding: 40px 0px;
 `;

@@ -4,9 +4,18 @@ import { ItemCardComponent } from "../components";
 export const ItemCardWrapper = styled.div`
   display: grid;
   margin-top: 30px;
-  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
   width: 100%;
+
+  @media (max-width: 375px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media (min-width: 768px) and (max-width: 999px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 1000px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 export const MainItemView = ({
@@ -15,7 +24,7 @@ export const MainItemView = ({
   profileImage,
   contentImage,
 }) => {
-  const array = Array(20).fill(0);
+  const array = Array(12).fill(0);
 
   return (
     <ItemCardWrapper>
