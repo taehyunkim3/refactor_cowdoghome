@@ -8,6 +8,10 @@ export const TopBannerContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #00bbff;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const ContentContainer = styled.div`
