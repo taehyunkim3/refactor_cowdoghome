@@ -1,7 +1,8 @@
+// @ts-nocheck
 import styled from "styled-components";
-import { SignUpLayout } from "./layout";
 import { Button, CircleImage, EmailForm, InputForm } from "../../components";
 import { Link } from "react-router-dom";
+import { SignUpLayout } from "./layout";
 
 export const SignUpPage = ({}) => {
   return (
@@ -11,16 +12,56 @@ export const SignUpPage = ({}) => {
           style={{
             display: "flex",
             flexDirection: "column",
-            borderBottom: "1px solid gray",
           }}
         >
-          <b>회원가입</b>
-          <div>
-            <span>SNS계정으로 간편하게 회원가입</span>
-            <div>
-              <CircleImage type="kakao" />
-              <CircleImage type="naver" />
-            </div>
+          <h1
+            style={{
+              color: "rgb(66, 66, 66)",
+              fontSize: "20px",
+            }}
+          >
+            회원가입
+          </h1>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              margin: "30px 0",
+              paddingBottom: "30px",
+              borderBottom: "1px solid rgb(237, 237, 237)",
+            }}
+          >
+            <span
+              style={{
+                color: "rgb(117, 117, 117)",
+                fontSize: "12px",
+                margin: "15px 0",
+                textAlign: "center",
+              }}
+            >
+              SNS계정으로 간편하게 회원가입
+            </span>
+            <ul style={{ display: "flex", justifyContent: "center" }}>
+              <li style={{ margin: "0 10px" }}>
+                {/* 연결될 link 추가해주시면 됩니다! */}
+                <Link to="">
+                  <CircleImage type="facebook" />
+                </Link>
+              </li>
+
+              <li style={{ margin: "0 10px" }}>
+                <Link to="">
+                  <CircleImage type="kakao" />
+                </Link>
+              </li>
+
+              <li style={{ margin: "0 10px" }}>
+                <Link to="">
+                  <CircleImage type="naver" />
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -64,23 +105,17 @@ export const SignUpPage = ({}) => {
           }}
         >
           <p
-            style={{ color: "#424242", fontSize: "15px", textAlign: "center" }}
+            style={{
+              color: "#424242",
+              fontSize: "15px",
+              textAlign: "center",
+              letterSpacing: "-0.4px",
+            }}
           >
             이미 아이디가 있으신가요?
           </p>
           <Link to="/login">
-            <span
-              style={{
-                textDecoration: "underline",
-                fontWeight: "bold",
-                fontSize: "15px",
-                paddingLeft: "10px",
-                textAlign: "center",
-                color: "rgb(66, 66, 66)",
-              }}
-            >
-              로그인
-            </span>
+            <LoginSpan>로그인</LoginSpan>
           </Link>
         </div>
       </ContentWrapper>
@@ -95,5 +130,19 @@ export const ContentWrapper = styled.div`
 
   @media (min-width: 768px) {
     width: 360px;
+  }
+`;
+
+export const LoginSpan = styled.span`
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: 15px;
+  padding-left: 10px;
+  text-align: center;
+  letter-spacing -0.4px;
+  color: rgb(66, 66, 66);
+
+  &:hover {
+    color: #7a7a7a;
   }
 `;

@@ -58,7 +58,7 @@ export const IconStyle = styled.svg`
 
 export const Input = styled.input`
   height: 40px;
-  flex: 1;
+  width: 100%;
   box-sizing: border-box;
   border: 1px solid #dbdbdb;
   padding: 0.8125em 0.9375em 0.875em;

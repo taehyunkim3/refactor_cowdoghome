@@ -15,11 +15,13 @@ export const InputForm = ({
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div
+      style={{ display: "flex", flexDirection: "column", marginBottom: "30px" }}
+    >
       <label
         style={{
           fontSize: "16px",
-          color: "",
+          color: "rgb(47, 52, 56)",
           fontWeight: 700,
           marginBottom: "12px",
         }}
@@ -29,7 +31,10 @@ export const InputForm = ({
       <div style={{ color: "#828C94", fontSize: "14px", marginBottom: "10px" }}>
         {msg}
       </div>
-      <Input type={type} placeholder={placeholder} onChange={handleChange} />
+      <label style={{ display: "flex" }}>
+        <Input type={type} placeholder={placeholder} onChange={handleChange} />
+      </label>
+
       <div
         style={{
           paddingTop: "10px",

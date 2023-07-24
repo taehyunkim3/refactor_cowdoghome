@@ -20,7 +20,7 @@ export const EmailForm = () => {
 
   return (
     <>
-      <b>이메일</b>
+      <b style={{ marginBottom: "12px" }}>이메일</b>
       <div
         style={{
           display: "flex",
@@ -50,7 +50,7 @@ export const EmailForm = () => {
             <option value="">선택해주세요</option>
             <option value="naver.com">naver.com</option>
             <option value="gmail.com">gmail.com</option>
-            {/* 도메인 추가 시 여기에 입력! */}
+            {/* 도메인 추가 시 여기에 추가해주시면 됩니다! */}
           </SelectorStyle>
           <SpanStyle>
             <IconStyle
@@ -64,7 +64,9 @@ export const EmailForm = () => {
         </SelectorWrapper>
       </div>
       <ErrorMsg>{error}</ErrorMsg>
-      <Button label="이메일 인증하기" theme="gray" size="large" b />
+      <div style={{ marginBottom: "30px", paddingTop: "2px" }}>
+        <Button label="이메일 인증하기" theme="gray" size="large" b />
+      </div>
     </>
   );
 };
