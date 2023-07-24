@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useDispatch, useSelector } from "react-redux";
 import { MainBannerView, MainItemView } from "../view";
 import { useInView } from "react-intersection-observer";

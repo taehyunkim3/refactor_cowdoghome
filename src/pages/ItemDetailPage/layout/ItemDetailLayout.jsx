@@ -1,9 +1,11 @@
-import { Content, Footer, Header, Wrapper } from "./style";
+import { Header, TopBanner } from "../../../components";
+import { Content, Footer, Wrapper } from "./style";
 
 export const ItemDetailLayout = ({ children }) => {
   return (
     <Wrapper>
-      <Header>Header</Header>
+      <TopBanner />
+      <Header />
       <Content>{children}</Content>
       <Footer>Footer</Footer>
     </Wrapper>
