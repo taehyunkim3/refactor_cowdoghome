@@ -1,28 +1,31 @@
-// LoginForm.jsx
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { Button, InputContainer } from "../../../shared";
-import { FormBox } from "./style";
-import { loginApi } from "../../../../api/loginApi"
-import { loginFailed, loginStart, loginSuccess } from "../../../../redux/reducers";
+import { InputContainer } from "../../../shared";
+import { FormBox, LoginButton } from "./style";
+import { loginApi } from "../../../../api/loginApi";
+import {
+  loginFailed,
+  loginStart,
+  loginSuccess,
+} from "../../../../redux/reducers";
 
 const LoginForm = () => {
-  console.log("login");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const mutation = useMutation(loginApi, {
-    onError: (error) => {
-      dispatch(loginFailed(error.message));
-    },
     onSuccess: (data) => {
+      localStorage.setItem("token", data.access_token);
+      localStorage.setItem("refreshToken", data.refresh_token);
       dispatch(loginSuccess(data));
       navigate("/");
     },
+    onError: (error) => {
+      dispatch(loginFailed(error.message));
+    },
   });
-
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
@@ -58,10 +61,15 @@ const LoginForm = () => {
         value={formValues.password}
         onChange={handleValueUpdate}
       />
-      <Button onClick={handleSubmit}>로그인</Button>
+      <LoginButton
+        theme="filled"
+        size="large"
+        onClick={handleSubmit}
+        label="로그인"
+      ></LoginButton>
+      {/* <button onClick={handleSubmit}>하하하하ㅏ하핳</button> */}
     </FormBox>
   );
 };
 
 export default LoginForm;
-

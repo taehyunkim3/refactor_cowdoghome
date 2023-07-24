@@ -11,10 +11,11 @@ export const Button = ({
   theme = "filled",
   size = "small",
   b = false,
+  onClick
 }) => {
   return (
-    <div style={{ display: "flex", flex: 1 }}>
-      <ButtonStyle theme={theme} size={size} b>
+    <div style={{ display: "flex", flex: 1 }} onClick={onClick}>
+      <ButtonStyle theme={theme} size={size} b >
         <div>{label}</div>
       </ButtonStyle>
     </div>

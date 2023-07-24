@@ -1,23 +1,15 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
+import { Button as BaseButton } from "../../../shared/Button/Button";
 
 export const FormBox = styled.form`
   width: 300px;
+  box-sizing: border-box;
 `;
 
-export const SNSLoginBox = styled.div`
-  width: 100%;
-`;
-
-export const SNSLoginText = styled.span`
-  margin: 35px 0 15px;
-  color: #757575;
-  font-size: 12px;
-  font-weight: normal;
-  line-height: 1.33;
-  text-align: center;
-`;
-
-export const SNSLoginBtn = styled.span`
-  width: 100%;
-  cursor: pointer;
-`;
+export const LoginButton = ({ children, ...props }) => (
+  <div style={{ margin: '20px 0' }}>
+    <BaseButton {...props}>
+      {children}
+    </BaseButton>
+  </div>
+);

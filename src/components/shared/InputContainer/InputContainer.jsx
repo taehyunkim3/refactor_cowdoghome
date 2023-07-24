@@ -24,7 +24,7 @@ export const InputContainer = ({
   const emWidth = width ? `${parseInt(width) / 16}em` : "18.75em";
   const emHeight = height ? `${parseInt(height) / 16}em` : "3.125em";
 
-  const handleFocus = () => setIsFocused(true);
+  const handleFocus = (e) => {setIsFocused(true)};
   const handleBlur = () => setIsFocused(false);
 
   return (

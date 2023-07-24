@@ -5,7 +5,7 @@ export const LoginLayout = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   background-color: #fafafa;
   font-family: "Jal_Haru";
 `;
@@ -26,6 +26,8 @@ export const LogoBox = styled.div`
   margin-bottom: 30px;
   width: 100%;
   height: 52.5px;
+  display: flex;
+  cursor: pointer;
 `;
 
 export const UserAccountForm = styled.div`
@@ -55,6 +57,7 @@ export const NonMembersBox = styled.div`
   margin-top: 30px;
   padding-top: 30px;
   border-top: 1px solid #dbdbdb;
+  text-align: center;
 `;
 
 export const NonMembersText = styled.span`
@@ -68,5 +71,5 @@ export const NonMembersText = styled.span`
   color: #424242;
   margin-bottom: 20px;
   cursor: pointer;
-  touch-action: manipulation;
+  font-weight: 100;
 `;
