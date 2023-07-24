@@ -20,7 +20,16 @@ export const EmailForm = () => {
 
   return (
     <>
-      <b style={{ marginBottom: "12px" }}>이메일</b>
+      <b
+        style={{
+          marginBottom: "12px",
+          display: "flex",
+          color: "rgb(47, 52, 56)",
+          fontSize: "16px",
+        }}
+      >
+        이메일
+      </b>
       <div
         style={{
           display: "flex",
