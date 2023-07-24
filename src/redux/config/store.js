@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { pageIndexReducer } from "../reducers";
+import { pageIndexReducer, topBannerReducer } from "../reducers";
 
 export const store = configureStore({
   reducer: {
     pageIndex: pageIndexReducer,
+    topBanner: topBannerReducer,
   },
 });

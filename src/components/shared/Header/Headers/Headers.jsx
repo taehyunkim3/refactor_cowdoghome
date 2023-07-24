@@ -12,6 +12,7 @@ import {
 import { CowDogHomeIcon } from "../CowDogHomeIcon";
 import { InputContainer } from "../../InputContainer/InputContainer";
 import { Button } from "../../Button";
+import { Link } from "react-router-dom";
 
 export const Headers = ({}) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -36,7 +37,9 @@ export const Headers = ({}) => {
             <SignBtn>로그인</SignBtn>
             <SignBtn>회원가입</SignBtn>
           </SignBox>
-          <CowDogHomeIcon />
+          <Link to="/">
+            <CowDogHomeIcon />
+          </Link>
           <PostButtonBox width="5.5em">
             <Button label="글쓰기" />
           </PostButtonBox>
@@ -44,7 +47,9 @@ export const Headers = ({}) => {
       ) : (
         <>
           <LogoContainer>
-            <CowDogHomeIcon />
+            <Link to="/">
+              <CowDogHomeIcon />
+            </Link>
           </LogoContainer>
           <div></div>
           <InputContainer width="188.34" height="40" placeholder="통합검색">
