@@ -8,6 +8,7 @@ export const CowDogHomeLogo = styled.div`
   background-size: 100%;
   width: 11.25rem;
   height: 2.3375rem;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     width: 10rem;
