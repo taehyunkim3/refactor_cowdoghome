@@ -7,6 +7,7 @@ import {
   MainPage,
   SignUpPage,
   PostPage,
+  HouseDetailPage,
 } from "../pages";
 
 export const Router = () => {
@@ -19,7 +20,7 @@ export const Router = () => {
         <Route path="/house/post" element={<PostPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/house/:houseId" element={<h1>HouseDetail</h1>} />
+        <Route path="/house/:houseId" element={<HouseDetailPage />} />
         {/* <Route
           path="/house/post"
           element={<ProtectedRoute element={<h1>HousePost</h1>} />}
