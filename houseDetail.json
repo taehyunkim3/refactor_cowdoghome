@@ -1,0 +1,44 @@
+{
+  "details": {
+    "detailsId": 3,
+    "userId": 1,
+    "content": "테스트내용",
+    "imgUrl": "테스트URL",
+    "createdAt": "2023-07-24T03:26:48.000Z",
+    "updatedAt": "2023-07-24T03:26:48.000Z"
+  },
+  "userData": {
+    "nickname": "Luna",
+    "profileImgUrl": null,
+    "createdAt": "2023-07-23T20:23:38.000Z"
+  },
+  "itemData": [
+    {
+      "itemId": 3,
+      "brandName": "센트팜",
+      "itemName": "캠핑 쿨러스탠드 아이스박스 받침대 거치대",
+      "price": "25000",
+      "WritePacks.coordinateX": 1555,
+      "WritePacks.coordinateY": 1000,
+      "ItemImgLists.itemImg": "[\"https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167108219333927637.jpg?gif=1&w=640&h=640&c=c&webp=1\",\"https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/162330826350275079.jpg?gif=1&w=640&h=640&c=c&webp=1\",\"https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/162330826567835967.jpg?gif=1&w=640&h=640&c=c&webp=1\"]"
+    },
+    {
+      "itemId": 4,
+      "brandName": "플랫 포인트",
+      "itemName": "BON CHAIR 2types",
+      "price": "380000",
+      "WritePacks.coordinateX": 1500,
+      "WritePacks.coordinateY": 1200,
+      "ItemImgLists.itemImg": "[\"https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/159178293272586726.jpg?gif=1&w=640&h=640&c=c&webp=1\"]"
+    },
+    {
+      "itemId": 5,
+      "brandName": "플랫 포인트",
+      "itemName": "DEER CERAMIC TABLE OAK 5size 4color",
+      "price": "580000",
+      "WritePacks.coordinateX": 1400,
+      "WritePacks.coordinateY": 1000,
+      "ItemImgLists.itemImg": "[\"https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/168930308759439031.JPG?gif=1&w=640&h=640&c=c&webp=1\"]"
+    }
+  ]
+}

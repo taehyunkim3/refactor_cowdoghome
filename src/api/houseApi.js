@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 
-const baseUrl = "https://hangublog.store/api";
+const baseUrl = "https://cowdoghome.store/api";
 
 
 // export const getDesks = async () => { // 목록
@@ -28,27 +28,28 @@ const baseUrl = "https://hangublog.store/api";
 
 export const postHousePost = async (post) => { // 사진전송
     try {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
         console.log('🐹게시요청');
 
-        console.log("postDesk" + JSON.stringify(post.profile));
-        const profileExt = post.profile.name.split('.').pop();
+        console.log("postDesk" + JSON.stringify(post));
+        const profileExt = post.imageUrl.name.split('.').pop();
 
 
         const formImageData = new FormData();
-        formImageData.append('file', post.profile, `profile.${profileExt}`)
+        formImageData.append('image', post.imageUrl, `image.${profileExt}`)
 
         const imageData = await axios({
             method: "post",
-            url: `${baseUrl}/file`,
+            url: `${baseUrl}/detail/image`,
             data: formImageData,
-            headers: { "Authorization": `Bearer ${token}` }
+            withCredentials: true,
+            // headers: { "Authorization": `Bearer ${token}` }
         });
 
         console.log(JSON.stringify(imageData) + "🏠")
-        const dataWithUrl = { ...post, profile: imageData.data.path }
-        const formedToken = { headers: { "Authorization": `Bearer ${token}` } };
-        const { data } = await axios.post(`${baseUrl}/desks`, dataWithUrl, formedToken);
+        const dataWithUrl = { ...post, imageUrl: imageData.data.url }
+        // const formedToken = { headers: { "Authorization": `Bearer ${token}` } };
+        const { data } = await axios.post(`${baseUrl}/detail`, dataWithUrl);
         return data;
     } catch (e) {
         alert(e.response.data.msg);
