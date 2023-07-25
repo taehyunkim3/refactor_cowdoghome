@@ -1,56 +1,89 @@
 {
-  "login": [
+  "register": [
     {
       "id": 1,
       "email": "test1@gamil.com",
-      "password": "test123"
+      "password": "test123",
+      "nickname": "nickname",
+      "confirm": "abc123!"
     },
     {
-      "id": 2,
-      "email": "test@test.com",
-      "password": "test1234"
+      "email": "ewqre@naver.com",
+      "password": "tidlsl0940!",
+      "nickname": "adsf",
+      "id": 2
     },
     {
-      "email": {
-        "email": "",
-        "password": ""
-      },
+      "email": "ewqre@naver.com",
+      "password": "tidlsl0940!",
+      "nickname": "adsf",
       "id": 3
     },
     {
-      "email": {
-        "email": "",
-        "password": ""
-      },
+      "email": "ewqre@naver.com",
+      "password": "tidlsl0940!",
+      "nickname": "adsf",
       "id": 4
     },
     {
-      "email": {
-        "email": "",
-        "password": ""
-      },
+      "email": "123@naver.com",
+      "password": "dkssud1!",
+      "nickname": "dkssud",
       "id": 5
     },
     {
-      "email": {
-        "email": "",
-        "password": ""
-      },
+      "email": "123@naver.com",
+      "password": "dkssud1!",
+      "nickname": "dkssud",
       "id": 6
     },
     {
-      "email": {
-        "email": "",
-        "password": ""
-      },
+      "email": "",
+      "password": "",
+      "nickname": "",
       "id": 7
     },
     {
-      "email": {
-        "email": "",
-        "password": ""
-      },
+      "email": "",
+      "password": "",
+      "nickname": "",
       "id": 8
+    },
+    {
+      "email": "qwe@hanmail.com",
+      "password": "tidlsl0940!",
+      "nickname": "dfkjlsdf",
+      "id": 9
+    },
+    {
+      "email": "",
+      "password": "",
+      "nickname": "",
+      "id": 10
+    },
+    {
+      "email": "",
+      "password": "",
+      "nickname": "",
+      "id": 11
+    },
+    {
+      "email": "",
+      "password": "",
+      "nickname": "",
+      "id": 12
+    },
+    {
+      "email": "ribon",
+      "password": "tidlsl0940!",
+      "nickname": "dsafsdf",
+      "id": 13
+    },
+    {
+      "email": "asdf@naver.com",
+      "password": "",
+      "nickname": "",
+      "id": 14
     }
   ]
 }

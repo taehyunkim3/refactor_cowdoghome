@@ -1,17 +1,42 @@
 import { useState } from "react";
-import { Input } from "./style";
+import { ErrorMsg, Input } from "./style";
 
 export const InputForm = ({
   type = "text",
   title,
   msg = "",
   placeholder = "",
+  onChange,
 }) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setInput(e.target.value);
+
+    if (onChange) {
+      onChange(e.target.value);
+    }
+    switch (type) {
+      case "password":
+        if (
+          !/(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}/.test(e.target.value)
+        ) {
+          setError("Invalid password");
+        } else {
+          setError("");
+        }
+        break;
+      case "nickname":
+        if (e.target.value.length < 2 || e.target.value.length > 15) {
+          setError("Invalid nickname");
+        } else {
+          setError("");
+        }
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -32,7 +57,12 @@ export const InputForm = ({
         {msg}
       </div>
       <label style={{ display: "flex" }}>
-        <Input type={type} placeholder={placeholder} onChange={handleChange} />
+        <Input
+          type={type}
+          value={input}
+          placeholder={placeholder}
+          onChange={handleChange}
+        />
       </label>
 
       <div
@@ -42,7 +72,7 @@ export const InputForm = ({
           color: "rgb(255, 119, 119)",
         }}
       >
-        {error}
+        {error && <ErrorMsg>{error}</ErrorMsg>}
       </div>
     </div>
   );

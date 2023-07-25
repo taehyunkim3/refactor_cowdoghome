@@ -5,17 +5,21 @@ import {
   SpanStyle,
   IconStyle,
   Input,
-  ErrorMsg,
 } from "./style";
 import { Button } from "../../../../components";
 
-export const EmailForm = () => {
+export const EmailForm = ({ onEmailChange, onDomainChange, children }) => {
   const [email, setEmail] = useState("");
   const [domain, setDomain] = useState("");
-  const [error, setError] = useState("");
 
-  const validateEmail = (input) => {
-    // 이메일 유효성 검사 규칙
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    onEmailChange(e.target.value);
+  };
+
+  const handleDomainChange = (e) => {
+    setDomain(e.target.value);
+    onDomainChange(e.target.value);
   };
 
   return (
@@ -42,6 +46,7 @@ export const EmailForm = () => {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            onBlur={handleEmailChange}
           />
         </div>
 
@@ -55,12 +60,19 @@ export const EmailForm = () => {
               console.log(e.target.value);
               setDomain(e.target.value);
             }}
+            onBlur={handleDomainChange}
           >
             <option value="">선택해주세요</option>
             <option value="naver.com">naver.com</option>
+            <option value="hanmail.com">hanmail.com</option>
+            <option value="daum.net">daum.net</option>
             <option value="gmail.com">gmail.com</option>
+            <option value="nate.com">nate.com</option>
+            <option value="hotmail.com">hotmail.com</option>
+            <option value="icloud.com">icloud.com</option>
             {/* 도메인 추가 시 여기에 추가해주시면 됩니다! */}
           </SelectorStyle>
+          {children}
           <SpanStyle>
             <IconStyle
               width="10"
@@ -72,8 +84,9 @@ export const EmailForm = () => {
           </SpanStyle>
         </SelectorWrapper>
       </div>
-      <ErrorMsg>{error}</ErrorMsg>
-      <div style={{ marginBottom: "30px", paddingTop: "2px" }}>
+      <div
+        style={{ marginTop: "20px", marginBottom: "30px", paddingTop: "2px" }}
+      >
         <Button label="이메일 인증하기" theme="gray" size="large" b />
       </div>
     </>

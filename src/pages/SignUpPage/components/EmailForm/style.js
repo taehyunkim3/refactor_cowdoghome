@@ -73,10 +73,3 @@ export const Input = styled.input`
     background-color: #fafafa;
   }
 `;
-
-export const ErrorMsg = styled.div`
-  padding-top: 10px;
-  font-size: 14px;
-  line-height: 18px;
-  color: rgb(255, 119, 119);
-`;
