@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { CircleButton } from "../../../components";
+import { Link } from "react-router-dom";
 
 export const ItemCardWrapper = styled.div`
   position: relative;
@@ -36,6 +37,7 @@ export const ItemCardComponent = ({
   introduction,
   profileImage,
   contentImage,
+  id,
 }) => {
   return (
     <div
@@ -74,7 +76,9 @@ export const ItemCardComponent = ({
         </div>
       </div>
       <div style={{ flex: 1, overflow: "hidden", borderRadius: 8 }}>
-        <MainImage src={contentImage} />
+        <Link to={`/house/${id}`}>
+          <MainImage src={contentImage} />
+        </Link>
       </div>
       <div
         style={{
