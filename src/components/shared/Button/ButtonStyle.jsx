@@ -18,8 +18,9 @@ const ButtonTheme = {
   },
 
   gray: {
-    backgroundColor: "rgb(234, 237, 239)",
+    backgroundColor: "rgb(247, 248, 250)",
     color: "rgb(194, 200, 204)",
+    border: "1px solid rgb(218, 220, 224)",
     hover: {
       backgroundColor: "rgb(234, 237, 239)",
     },
