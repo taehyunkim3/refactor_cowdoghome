@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { InputContainer } from "../../../shared";
+import { InputContainer } from "../../../../components/shared";
 import { FormBox, LoginButton } from "./style";
 import { loginApi } from "../../../../api/loginApi";
 import {
@@ -11,7 +11,7 @@ import {
   loginSuccess,
 } from "../../../../redux/reducers";
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -71,5 +71,3 @@ const LoginForm = () => {
     </FormBox>
   );
 };
-
-export default LoginForm;

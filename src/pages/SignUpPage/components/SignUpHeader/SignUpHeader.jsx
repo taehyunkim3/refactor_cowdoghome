@@ -1,4 +1,4 @@
-import { CowDogHomeIcon } from "../../../shared/Header/CowDogHomeIcon";
+import { CowDogHomeIcon } from "../../../../components";
 import { HeaderWrapper } from "./style";
 import { Link } from "react-router-dom";
 

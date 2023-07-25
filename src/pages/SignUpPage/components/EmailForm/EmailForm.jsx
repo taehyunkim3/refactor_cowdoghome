@@ -7,7 +7,7 @@ import {
   Input,
   ErrorMsg,
 } from "./style";
-import { Button } from "../../../shared";
+import { Button } from "../../../../components";
 
 export const EmailForm = () => {
   const [email, setEmail] = useState("");
