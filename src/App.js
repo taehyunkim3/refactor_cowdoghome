@@ -5,16 +5,22 @@ import { theme } from "./style";
 import { Provider } from "react-redux";
 import { store } from "./redux";
 import { GlobalStyle } from "./style/GlobalStyle";
+import { store } from "./redux";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const App = () => {
   return (
     <>
-      <GlobalStyle />
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <Router />
-        </ThemeProvider>
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+        <GlobalStyle />
+         <ThemeProvider theme={theme}>
+           <Provider store={store}>
+             <Router />
+           </Provider>
+         </ThemeProvider>
+      </QueryClientProvider>
     </>
   );
 };

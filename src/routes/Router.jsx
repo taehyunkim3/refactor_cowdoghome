@@ -1,11 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import ProtectedRoute from "./ProtectedRoute";
-import { ItemDetailPage, MainPage, SignUpPage } from "../pages";
+import { KakaoCallback } from "../pages/CallbackPage";
+import { LoginPage, ItemDetailPage, MainPage, SignUpPage } from "../pages";
 
 export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/auth/kakao/callback" element={<KakaoCallback />} />
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<h1>Login</h1>} />
         <Route path="/signup" element={<SignUpPage />} />
