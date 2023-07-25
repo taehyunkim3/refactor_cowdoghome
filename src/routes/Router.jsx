@@ -10,7 +10,7 @@ export const Router = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/auth/kakao/callback" element={<KakaoCallback />} />
         <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<h1>Login</h1>} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/house/:houseId" element={<h1>HouseDetail</h1>} />
         {/* <Route

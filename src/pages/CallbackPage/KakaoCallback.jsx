@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const KakaoCallback = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const [authCode, setAuthCode] = useState(params.get("code"));
