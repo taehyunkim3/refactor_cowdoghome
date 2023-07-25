@@ -1,7 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import ProtectedRoute from "./ProtectedRoute";
 import { KakaoCallback } from "../pages/CallbackPage";
-import { LoginPage, ItemDetailPage, MainPage, SignUpPage } from "../pages";
+import {
+  LoginPage,
+  ItemDetailPage,
+  MainPage,
+  SignUpPage,
+  PostPage,
+} from "../pages";
 
 export const Router = () => {
   return (
@@ -10,6 +16,7 @@ export const Router = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/auth/kakao/callback" element={<KakaoCallback />} />
         <Route path="/" element={<MainPage />} />
+        <Route path="/house/post" element={<PostPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/house/:houseId" element={<h1>HouseDetail</h1>} />

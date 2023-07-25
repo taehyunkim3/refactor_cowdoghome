@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const HeaderBox = styled.div`
-  width: 100%;
+  // width: 100%; //레이아웃 때문이 잠깐 주석처리 해놓았습니다 . 김태현
   height: calc(5em - 0.063em); // 기본 web
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

@@ -15,21 +15,21 @@ export const RoundButton = ({
 }) => {
   let pickedBgColor;
   let pickedTextColor = "#ffffff";
-  switch (color) {
-    case "blue":
+  switch (color.toUpperCase()) {
+    case "BLUE":
       pickedBgColor = "#35c5f0";
       break;
-    case "red":
+    case "RED":
       pickedBgColor = "#f44336";
       break;
-    case "yellow":
+    case "YELLOW":
       pickedBgColor = "#ffeb3b";
       break;
-    case "gray":
+    case "GRAY":
       pickedBgColor = "#9e9e9e";
       pickedBgColor = "#838d95";
       break;
-    case "transparent":
+    case "TRANSPARENT":
       pickedBgColor = "rgba(0, 0, 0, 0.1)";
       pickedTextColor = "#000000";
       break;

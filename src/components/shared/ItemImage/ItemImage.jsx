@@ -2,7 +2,7 @@ import { ItemImageLayer } from "./style";
 
 /**
  * @param {string} type - 아이템 이미지 타입 (HouseItem, ShoppingItemSelect, ShoppingItemMain)
- * ShoppingItemMain은 사이즈가 100%로 고정되어 있습니다.
+ * ShoppingItemMain은 사이즈가 100%로 고정되어 있습니다. 대소문자구분없음
  * @param {string} imgUrl - [선택] 아이템 이미지 url
  * @param {string} size - [선택] 아이템 이미지 크기
  * @param {string} roundSize - [선택] 아이템 이미지 라운드 크기
@@ -16,18 +16,18 @@ export const ItemImage = ({
   size = "100px",
   isHover = false,
 }) => {
-  switch (type) {
-    case "HouseItem":
+  switch (type.toUpperCase()) {
+    case "HOUSEITEM":
       roundSize = "32px";
       size = "100px";
       isHover = true;
       break;
-    case "ShoppingItemSelect":
+    case "SHOPPINGITEMSELECT":
       roundSize = "4px";
       size = "54px";
       isHover = false;
       break;
-    case "ShoppingItemMain":
+    case "SHOPPINGITEMMAIN":
       roundSize = "6px";
       size = "100%";
       isHover = true;
@@ -37,7 +37,12 @@ export const ItemImage = ({
 
   return (
     <>
-      <ItemImageLayer size={size} round={roundSize} isHover={isHover}>
+      <ItemImageLayer
+        size={size.toLowerCase()}
+        round={roundSize}
+        isHover={isHover}
+        type={type.toUpperCase()}
+      >
         <img src={imgUrl} alt="itemImage" />
       </ItemImageLayer>
     </>
