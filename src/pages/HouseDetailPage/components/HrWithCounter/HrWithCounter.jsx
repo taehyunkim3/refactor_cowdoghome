@@ -9,9 +9,7 @@ export const HrWithCounter = ({
   return (
     <>
       <TextWrapper>
-        {" "}
         <div className="right">
-          {" "}
           <dt>조회</dt>
           <dd>{views}</dd>
           <dt>댓글</dt>
@@ -19,7 +17,6 @@ export const HrWithCounter = ({
         </div>
         <p>신고하기</p>
       </TextWrapper>
-
       <Hr />
     </>
   );

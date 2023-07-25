@@ -54,6 +54,10 @@ export const HouseDetailPage = ({}) => {
                   <CircleButton icon="plus" type="small" />
                   <ItemDetailBubble x="5%" name="기본상태" />
                 </OnPosition>
+                <OnPosition top="0%" left="0%">
+                  <CircleButton icon="plus" type="small" />
+                  <ItemDetailBubble x="5%" name="00" />
+                </OnPosition>
               </MainImage>
               <RelatedItems>
                 <ul>
