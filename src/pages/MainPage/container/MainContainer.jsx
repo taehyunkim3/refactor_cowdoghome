@@ -701,6 +701,7 @@ export const MainContainer = ({}) => {
         return (
           <MainItemView
             key={i}
+            id={1}
             nickname={nickname}
             introduction={introduction}
             profileImage={profileImage}
