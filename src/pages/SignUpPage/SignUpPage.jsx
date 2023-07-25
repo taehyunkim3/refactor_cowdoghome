@@ -1,10 +1,10 @@
-// @ts-nocheck
 import styled from "styled-components";
-import { Button, CircleImage, EmailForm, InputForm } from "../../components";
 import { Link } from "react-router-dom";
+import { CircleImage, Button } from "../../components";
+import { EmailForm, InputForm } from "./components";
 import { SignUpLayout } from "./layout";
 
-export const SignUpPage = ({}) => {
+export const SignUpPage = () => {
   return (
     <SignUpLayout>
       <ContentWrapper>

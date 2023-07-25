@@ -1,4 +1,4 @@
-import { SignUpHeader } from "../../../components/pages/SignUpPage/SignUpHeader";
+import { SignUpHeader } from "../components";
 import { Content, Wrapper } from "./style";
 
 export const SignUpLayout = ({ children }) => {

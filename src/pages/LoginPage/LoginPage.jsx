@@ -1,4 +1,5 @@
 import { CowDogHomeIcon } from "../../components/shared/Header/CowDogHomeIcon";
+import { LoginForm, SocialLogin } from "./components";
 import {
   ErrorText,
   LoginBox,
@@ -8,8 +9,7 @@ import {
   UserAccountBtn,
   UserAccountForm,
 } from "./style";
-import LoginForm from "../../components/pages/LoginPage/LoginForm/LoginForm";
-import SocialLogin from "../../components/pages/LoginPage/SocialLogin/SocialLogin";
+
 import { useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {

@@ -22,7 +22,6 @@ export const SNSLoginContainer = styled.div`
   display: flex;
   flex-direction: row;
   line-height: 1;
-
 `;
 
 export const SNSLoginBtn = styled.span`
