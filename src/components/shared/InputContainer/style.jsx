@@ -8,9 +8,11 @@ export const InputBox = styled.div`
   display: block;
   box-sizing: border-box;
   border-radius: 0.25em;
+  background-color: transparent;
 
   & > label {
     display: block;
+    background-color: transparent;
     width: 100%;
     height: 100%;
     border: 1px solid ${(props) => (props.error ? "#FF7777" : "#dadde0")};
@@ -24,6 +26,7 @@ export const InputBox = styled.div`
 export const Input = styled.input`
   width: 100%;
   height: 100%;
+  background-color: transparent;
   flex-grow: 1;
   box-sizing: border-box;
   border: none;

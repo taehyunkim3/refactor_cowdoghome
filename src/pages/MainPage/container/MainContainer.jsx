@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useDispatch, useSelector } from "react-redux";
 import { MainBannerView, MainItemView } from "../view";
 import { useInView } from "react-intersection-observer";
@@ -682,7 +683,6 @@ const test = [
 export const MainContainer = ({}) => {
   const dispatch = useDispatch();
   const pageIndex = useSelector((state) => state.pageIndex);
-  console.log(pageIndex);
 
   const { ref, inView } = useInView({
     threshold: 0,

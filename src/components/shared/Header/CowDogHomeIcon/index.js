@@ -1,1 +1,1 @@
-export * from './CowDogHomeIcon'
+export * from "./CowDogHomeIcon";

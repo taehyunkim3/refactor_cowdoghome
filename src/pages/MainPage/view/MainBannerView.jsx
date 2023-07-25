@@ -5,6 +5,9 @@ export const Image = styled.img`
   height: 400px;
   transition: transform 0.2s ease-in-out;
 
+  @media (max-width: 768px) {
+    display: none;
+  }
   &:hover {
     transform: scale(1.05);
   }

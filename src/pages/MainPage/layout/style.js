@@ -4,21 +4,16 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: gray;
 `;
 
 export const Header = styled.div`
   background-color: #caeae5;
 `;
 
-export const Banner = styled.div`
-  display: flex;
-`;
-
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #f4f1f9;
+  background-color: #ffffff;
   padding: 0 100px;
 `;
 
