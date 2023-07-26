@@ -69,12 +69,7 @@ export const SignUpPage = () => {
       error.email ||
       error.password ||
       error.passwordConfirm ||
-      error.nickname ||
-      !email ||
-      !domain ||
-      !password ||
-      !passwordConfirm ||
-      !nickname
+      error.nickname
     ) {
       alert("모든 필드를 채우고 유효성 검사를 통과해야 합니다.");
       return;
