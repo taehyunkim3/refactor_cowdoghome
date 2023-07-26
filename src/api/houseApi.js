@@ -42,7 +42,7 @@ export const postHousePost = async (post) => { // 사진전송
             method: "post",
             url: `${baseUrl}/detail/image`,
             data: formImageData,
-            withCredentials: true,
+            // withCredentials: true,
             // headers: { "Authorization": `Bearer ${token}` }
         });
 
