@@ -17,3 +17,8 @@ export const Input = styled.input`
     background-color: #fafafa;
   }
 `;
+
+export const ErrorMsg = styled.span`
+  color: red;
+  font-size: 12px;
+`;
