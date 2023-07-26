@@ -3,20 +3,20 @@ import axios from "axios";
 
 
 
-const baseUrl = "https://cowdoghome.store/api";
+const baseUrl = process.env.REACT_APP_SERVER_API_URL;
 
 
-// export const getDesks = async () => { // 목록
-//     try {
-//         const { data } = await axios.get(`${baseUrl}/desks`);
-//         console.log(data);
-//         return data;
-//     } catch (e) {
-//         alert(e.response.data.msg);
-//     }
-// }
+export const getItems = async () => { // 목록
+    try {
+        const { data } = await axios.get(`${baseUrl}/itempage`);
+        console.log(data);
+        return data;
+    } catch (e) {
+        alert(e.response.data.msg);
+    }
+}
 
-export const getDeskDetail = async (id) => { // 상세
+export const getHouseDetail = async (id) => { // 상세
     try {
         const { data } = await axios.get(`${baseUrl}/detail/${id}`);
         return data;
@@ -32,11 +32,11 @@ export const postHousePost = async (post) => { // 사진전송
         console.log('🐹게시요청');
 
         console.log("postDesk" + JSON.stringify(post));
-        const profileExt = post.imageUrl.name.split('.').pop();
+        const profileExt = post.imgUrl.name.split('.').pop();
 
 
         const formImageData = new FormData();
-        formImageData.append('image', post.imageUrl, `image.${profileExt}`)
+        formImageData.append('image', post.imgUrl, `image.${profileExt}`)
 
         const imageData = await axios({
             method: "post",
@@ -47,8 +47,8 @@ export const postHousePost = async (post) => { // 사진전송
         });
 
         console.log(JSON.stringify(imageData) + "🏠")
-        const dataWithUrl = { ...post, imageUrl: imageData.data.url }
-        const formedToken = { headers: { "Authorization": `Bearer ${token}` } };
+        const dataWithUrl = { ...post, imgUrl: imageData.data.url }
+        const formedToken = { headers: { "Cowdog": `Bearer ${token}` } };
         const { data } = await axios.post(`${baseUrl}/detail`, dataWithUrl, formedToken);
         return data;
     } catch (e) {
@@ -167,17 +167,17 @@ export const postHousePost = async (post) => { // 사진전송
 //     }
 // }
 
-export const getIsValidId = async (userId) => {
-    try {
-        const { data } = await axios.post(`${baseUrl}/auth/signup/Id`, {
+// export const getIsValidId = async (userId) => {
+//     try {
+//         const { data } = await axios.post(`${baseUrl}/auth/signup/Id`, {
 
-            userId: userId,
+//             userId: userId,
 
-        });
-        return data.isMatchId; // 서버에서 true 또는 false를 반환한다고 가정
-    } catch (e) {
-        console.error(e);
-        return false;
-    }
-}
+//         });
+//         return data.isMatchId; // 서버에서 true 또는 false를 반환한다고 가정
+//     } catch (e) {
+//         console.error(e);
+//         return false;
+//     }
+// }
 

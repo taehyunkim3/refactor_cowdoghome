@@ -96,11 +96,11 @@ export const InputFile = ({}) => {
 
     try {
       const compressedFile = await imageCompression(imageFile, options);
-      const imageUrl = URL.createObjectURL(compressedFile);
+      const imgUrl = URL.createObjectURL(compressedFile);
 
-      setFileUrl(imageUrl);
+      setFileUrl(imgUrl);
       // setInput({ ...input, imageUrl: compressedFile });
-      setPostData({ ...input, imageUrl: compressedFile });
+      setPostData({ ...input, imgUrl: compressedFile });
     } catch (error) {
       console.error(error);
     }

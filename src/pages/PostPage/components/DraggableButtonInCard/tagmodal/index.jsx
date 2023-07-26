@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { ListItemBubble } from "../../ListItemBubble";
+import { useQuery } from "@tanstack/react-query";
+import { getItems } from "../../../../../api/houseApi";
 
 export const ImageTagModal = ({
   closeModal,
@@ -26,53 +28,20 @@ export const ImageTagModal = ({
         });
     }
   }, []);
+  const { data, isLoading, isError, error } = useQuery(["item"], () =>
+    getItems()
+  );
+  console.log(data);
 
-  const mockData = [
-    {
-      itemId: 1,
-      brandName: "브랜드명",
-      itemName: "상품명",
-      // "rating": "별점",
-      // "discount": "할인율",
-      // "price": "원가격",
-      // "discountprice": "할인가격",
-      // "benefit" : discountprice * 0.001,
-      ColorOptions: "",
-      SizeOptions: "",
-      ItemImgLists:
-        "https://images.openai.com/blob/b4871bfc-8429-4a93-a5a1-66e1dd60e3f8/gpt-4-92586ac_1080p60-poster.jpg?trim=0,0,0,0&width=2000",
-    },
-    {
-      itemId: 2,
-      brandName: "브랜2드명",
-      itemName: "상품명2",
-      // "rating": "별점",
-      // "discount": "할인율",
-      // "price": "원가격",
-      // "discountprice": "할인가격",
-      // "benefit" : discountprice * 0.001,
-      ColorOptions: "",
-      SizeOptions: "",
-      ItemImgLists:
-        "https://images.openai.com/blob/b4871bfc-8429-4a93-a5a1-66e1dd60e3f8/gpt-4-92586ac_1080p60-poster.jpg?trim=0,0,0,0&width=2000",
-    },
-    {
-      itemId: 3,
-      brandName: "브랜드3명",
-      itemName: "상품명3",
-      // "rating": "별점",
-      // "discount": "할인율",
-      // "price": "원가격",
-      // "discountprice": "할인가격",
-      // "benefit" : discountprice * 0.001,
-      ColorOptions: "",
-      SizeOptions: "",
-      ItemImgLists:
-        "https://images.openai.com/blob/b4871bfc-8429-4a93-a5a1-66e1dd60e3f8/gpt-4-92586ac_1080p60-poster.jpg?trim=0,0,0,0&width=2000",
-    },
-  ];
   const handleSelect = (item) => {
-    setSelectedItem(item);
+    setSelectedItem({
+      itemId: item.itemId,
+      brandName: item.brandName,
+      itemName: item.itemName,
+      ItemImgLists: item["ItemImgLists.itemImg"]
+        ? JSON.parse(item["ItemImgLists.itemImg"])
+        : null,
+    });
     console.log("🐹" + item.brandName);
     closeModal();
   };
@@ -81,33 +50,24 @@ export const ImageTagModal = ({
     <StModalCotainer>
       {!selectedItem ? (
         <>
-          {" "}
-          {mockData.map((item, index) => (
-            <div key={index}>
-              {item.name}
-              {/* <button onClick={() => handleSelect(item)}>Select</button> */}
-              <ListItemBubble
-                onClickFunction={() => handleSelect(item)}
-                imageUrl={item.ItemImgLists}
-                brand={item.brandName}
-                name={item.itemName}
-              />
-            </div>
-          ))}
-          {/* <ListItemBubble onClickFunction={() => handleSelect(item.itemId)} /> */}
-          {/* <input
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          /> */}
-          {/* {results.map((item, index) => (
-            // <div key={index}>
-            //   {item.name}
-            //   <button onClick={() => handleSelect(item)}>Select</button>
-            // </div>
-            <ListItemBubble />
-          ))} */}
+          {isLoading ? (
+            <div>Loading...</div>
+          ) : isError ? (
+            <div>Error: {error.message}</div>
+          ) : (
+            data &&
+            data.allItems &&
+            data.allItems.map((item, index) => (
+              <div key={index}>
+                <ListItemBubble
+                  onClickFunction={() => handleSelect(item)}
+                  imageUrl={JSON.parse(item["ItemImgLists.itemImg"])}
+                  brand={item.brandName}
+                  name={item.itemName}
+                />
+              </div>
+            ))
+          )}
         </>
       ) : (
         <div>
@@ -135,7 +95,7 @@ const StModalCotainer = styled.div`
   top: 40px;
   border-radius: 10px;
   padding: 20px;
-  z-index: 999;
+  z-index: 1000;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

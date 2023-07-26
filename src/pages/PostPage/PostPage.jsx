@@ -19,11 +19,19 @@ export const PostPage = ({}) => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    const formedItemData = itemData.tagsId.map((id, index) => ({
-      itemId: id,
-      x: itemData.percentX[index],
-      y: itemData.percentY[index],
-    }));
+    console.log("👦🏾" + JSON.stringify(itemData));
+    // const formedItemData = itemData.tagsId.map((id, index) => ({
+    //   itemId: id,
+    //   x: itemData.percentX[index],
+    //   y: itemData.percentY[index],
+    // }));
+    const formedItemData = Object.values(itemData)
+      .filter((item) => item.itemId != null)
+      .map((item) => ({
+        itemId: item.itemId,
+        x: item.percentX,
+        y: item.percentY,
+      }));
 
     const payload = {
       ...postData,

@@ -15,7 +15,8 @@ export const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/auth/kakao/callback" element={<KakaoCallback />} />
+        {/* <Route path="/auth/kakao/callback" element={<KakaoCallback />} /> */}
+        <Route path="/auth/callback" element={<KakaoCallback />} />
         <Route path="/" element={<MainPage />} />
         <Route path="/house/post" element={<PostPage />} />
         <Route path="/login" element={<LoginPage />} />
