@@ -5,7 +5,10 @@ const profileImage =
 const contentImage =
   "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/168992315568603407.jpeg?w=1440";
 export const imageUrl =
-  "https://img.freepik.com/premium-photo/wallpaper-with-dark-dramatic-gradient-colors-ai-generation_201606-3458.jpg";
+  "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/projects/168520168083082625.jpg?w=1700&h=1019.5985832349469&c=c";
+
+export const bannerUrl =
+  "https://image.ohou.se/i/bucketplace-v2-development/uploads/banners/home_banner/168793929268615326.png?w=720";
 
 export const backendData = {
   main: [
