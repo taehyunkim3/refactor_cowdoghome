@@ -94,7 +94,6 @@ export const ImageTagModal = ({
               />
             </div>
           ))}
-          <button onClick={() => closeModal()}>닫기</button>
           {/* <ListItemBubble onClickFunction={() => handleSelect(item.itemId)} /> */}
           {/* <input
             type="text"
@@ -143,4 +142,5 @@ const StModalCotainer = styled.div`
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, and Opera */
   }
+  border: 1px solid #dddcddff;
 `;

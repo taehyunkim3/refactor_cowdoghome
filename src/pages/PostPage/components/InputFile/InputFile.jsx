@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
 import imageCompression from "browser-image-compression";
 
 import { TextBox } from "./style";
-import { DraggablePoint } from "../DraggablePoint";
 import { useComponentSize } from "../../hooks";
 import { MdPhotoCamera } from "react-icons/md";
 import { DraggableButtonInCard } from "../DraggableButtonInCard";
+import { PostPageContext } from "../../contexts/PostPageContext";
 
 const InputFileLayout = styled.div`
   text-align: center;
@@ -69,28 +69,29 @@ const Camera = styled.div`
   margin: 0px 0px 14.5px;
 `;
 const initialInput = {
-  description: "",
-  profile: null,
-  deskImg: null,
-  itemInfo: [],
+  content: "",
 };
-const initialItemInfo = {};
-
 export const InputFile = ({}) => {
+  const { setPostData, postData } = useContext(PostPageContext);
+
+  // const { fileData, otherData, onSubmitHandler, setFileData, setOtherData } =
+  //   useContext(PostPageContext);
   const [itemTags, setItemTags] = useState([]);
   const fileUpload = useRef();
   const [fileUrl, setFileUrl] = useState(null);
   const [input, setInput] = useState(initialInput);
-  const [axisPosition, setAxisPosition] = useState(initialItemInfo);
+
   const options = {
     maxSizeMB: 0.8,
     maxWidthOrHeight: 1700,
     useWebWorker: true,
   };
   const [componentRef, size] = useComponentSize(fileUrl);
-  const width = componentRef.current?.clientWidth ?? 0;
-  const height = componentRef.current?.clientHeight ?? 0;
+  // const width = componentRef.current?.clientWidth ?? 0;
+  // const height = componentRef.current?.clientHeight ?? 0;
   const onChangeImage = async (e) => {
+    // const file = e.target.files[0];
+    // setPostData(file);
     const imageFile = e.target.files[0];
 
     try {
@@ -98,7 +99,8 @@ export const InputFile = ({}) => {
       const imageUrl = URL.createObjectURL(compressedFile);
 
       setFileUrl(imageUrl);
-      setInput({ ...input, deskImg: compressedFile });
+      // setInput({ ...input, imageUrl: compressedFile });
+      setPostData({ ...input, imageUrl: compressedFile });
     } catch (error) {
       console.error(error);
     }
@@ -107,6 +109,10 @@ export const InputFile = ({}) => {
     return () => {};
   }, [setItemTags]);
 
+  const onChangeValue = (e) => {
+    const { name, value } = e.target;
+    setPostData({ ...postData, [name]: value });
+  };
   return (
     <>
       {fileUrl ? (
@@ -159,8 +165,9 @@ export const InputFile = ({}) => {
               <input
                 type="file"
                 id="file"
-                ref={fileUpload}
+                accept="image/*"
                 onChange={onChangeImage}
+                ref={fileUpload}
               />
             </InputFileLayout>
           </div>
@@ -170,7 +177,9 @@ export const InputFile = ({}) => {
       <TextBox>
         <textarea
           type="text"
-          name="description"
+          name="content"
+          onChange={onChangeValue}
+          value={postData.content}
           placeholder="어떤 사진인지 짧은 소개로 시작해보세요."
         />
       </TextBox>

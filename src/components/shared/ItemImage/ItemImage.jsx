@@ -7,6 +7,7 @@ import { ItemImageLayer } from "./style";
  * @param {string} size - [선택] 아이템 이미지 크기
  * @param {string} roundSize - [선택] 아이템 이미지 라운드 크기
  * @param {boolean} isHover - [선택] 아이템 이미지 호버 여부
+ * @param {function} onClickFunction - [선택] 아이템 이미지 클릭시 실행할 함수
  *
  */
 export const ItemImage = ({
@@ -15,6 +16,7 @@ export const ItemImage = ({
   roundSize = "0px",
   size = "100px",
   isHover = false,
+  onClickFunction = () => {},
 }) => {
   switch (type.toUpperCase()) {
     case "HOUSEITEM":
@@ -42,6 +44,7 @@ export const ItemImage = ({
         round={roundSize}
         isHover={isHover}
         type={type.toUpperCase()}
+        onClick={onClickFunction}
       >
         <img src={imgUrl} alt="itemImage" />
       </ItemImageLayer>

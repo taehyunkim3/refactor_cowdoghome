@@ -33,7 +33,7 @@ export const RoundButton = ({
       pickedBgColor = "rgba(0, 0, 0, 0.1)";
       pickedTextColor = "#000000";
       break;
-    case "lightGray":
+    case "LIGHTGRAY":
       pickedBgColor = "#f5f5f5";
       pickedTextColor = "#828c94";
       break;

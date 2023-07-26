@@ -14,12 +14,13 @@ export const App = () => {
     <>
       <QueryClientProvider client={queryClient}>
         <GlobalStyle />
-         <ThemeProvider theme={theme}>
-           <Provider store={store}>
-             <Router />
-           </Provider>
-         </ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <Provider store={store}>
+            <Router />
+          </Provider>
+        </ThemeProvider>
       </QueryClientProvider>
+
     </>
   );
 };
