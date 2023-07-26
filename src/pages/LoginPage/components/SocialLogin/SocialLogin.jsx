@@ -96,17 +96,21 @@ export const SocialLogin = () => {
     window.location.href = LoginURL;
   };
 
+  const handleSocialLogin = () => {
+    window.alert("져런....깨똑으로 로그인은 오떠신가유🤪");
+  };
+
   return (
     <SNSLoginBox>
       <SNSLoginText>SNS계정으로 간편 로그인/회원가입</SNSLoginText>
       <div>
-        <SNSLoginBtn>
+        <SNSLoginBtn onClick={handleSocialLogin}>
           <CircleImage type="facebook" />
         </SNSLoginBtn>
         <SNSLoginBtn onClick={handleKakaoClick}>
           <CircleImage type="kakao" />
         </SNSLoginBtn>
-        <SNSLoginBtn>
+        <SNSLoginBtn onClick={handleSocialLogin}>
           <CircleImage type="naver" />
         </SNSLoginBtn>
       </div>

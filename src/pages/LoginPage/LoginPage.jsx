@@ -19,6 +19,22 @@ export const LoginPage = () => {
     navigate("/");
   };
 
+  const handleGoToSignUp = () => {
+    navigate("/signup");
+  };
+
+  const handlePasswordReset = () => {
+    window.alert("비밀번호 재설정 불가지롱😝");
+  };
+
+  const handleNoMemberOrder = () => {
+    window.alert("비회원은 주문 못하지롱😝");
+  };
+
+  const handleProblemLogin = () => {
+    window.alert("저런...인스타로 문의 부탁드려요...🙏");
+  };
+
   return (
     <LoginLayout>
       <LoginBox>
@@ -29,12 +45,18 @@ export const LoginPage = () => {
         </LogoBox>
         <LoginForm />
         <UserAccountForm>
-          <UserAccountBtn>비밀번호 재설정</UserAccountBtn>
-          <UserAccountBtn>회원가입</UserAccountBtn>
+          <UserAccountBtn onClick={handlePasswordReset}>
+            비밀번호 재설정 |
+          </UserAccountBtn>
+          <UserAccountBtn onClick={handleGoToSignUp}> 회원가입</UserAccountBtn>
         </UserAccountForm>
         <SocialLogin />
-        <ErrorText>로그인에 문제가 있으신가요?</ErrorText>
-        <NonMembersBox>비회원 주문하기</NonMembersBox>
+        <ErrorText onClick={handleProblemLogin}>
+          로그인에 문제가 있으신가요?
+        </ErrorText>
+        <NonMembersBox onClick={handleNoMemberOrder}>
+          비회원 주문하기
+        </NonMembersBox>
       </LoginBox>
     </LoginLayout>
   );

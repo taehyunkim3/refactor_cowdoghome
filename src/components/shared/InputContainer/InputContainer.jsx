@@ -16,15 +16,19 @@ export const InputContainer = ({
   width,
   height,
   type,
+  name,
   placeholder,
   children,
+  onChange,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const emWidth = width ? `${parseInt(width) / 16}em` : "18.75em";
   const emHeight = height ? `${parseInt(height) / 16}em` : "3.125em";
 
-  const handleFocus = (e) => {setIsFocused(true)};
+  const handleFocus = (e) => {
+    setIsFocused(true);
+  };
   const handleBlur = () => setIsFocused(false);
 
   return (
@@ -38,7 +42,9 @@ export const InputContainer = ({
         {children}
         <Input
           type={type}
+          name={name}
           placeholder={placeholder}
+          onChange={onChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
