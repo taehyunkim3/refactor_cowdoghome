@@ -6,6 +6,7 @@ import {
   Header,
   ItemDetailBubble,
   ItemImage,
+  TopBanner,
 } from "../../components";
 import { OnPositionBubble, UserProfileContainer } from "./components";
 import { HrWithCounter } from "./components/HrWithCounter/HrWithCounter"; //이거는 무슨의미인지 모르겠음
@@ -55,6 +56,7 @@ export const HouseDetailPage = ({}) => {
     <>
       {" "}
       <CommonLayout>
+        <TopBanner />
         <Header />
         {/* <HouseDetailPageLayout> */}
         <MainLayout>
