@@ -1,11 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import Draggable from "react-draggable";
 import { ImageTagModal } from "./tagmodal";
 import { styled } from "styled-components";
 import { CircleButton } from "../../../../components";
 import { useComponentSize } from "../../hooks";
+import { PostPageContext } from "../../contexts/PostPageContext";
 
 export const DraggableButtonInCard = ({ fileUrl }) => {
+  const { itemData, setitemData } = useContext(PostPageContext);
   const [isEditing, setIsEditing] = useState(false);
   const addButtonRef = useRef(null);
   const initialState = {
@@ -19,7 +21,6 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
   };
   const [tagData, setTagData] = useState(initialState);
   const [componentRef, size] = useComponentSize(fileUrl);
-  // const [modalVisible, setModalVisible] = useState([]);
 
   const addNewButton = (e) => {
     if (!isEditing || tagData.modalVisible.some((vis) => vis)) return;
@@ -29,9 +30,6 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
     const x = e.clientX - divRect.x;
     const y = e.clientY - divRect.y;
     console.log(JSON.stringify(tagData));
-
-    // const x = componentRef.current?.clientWidth ?? 0;
-    // const y = componentRef.current?.clientHeight ?? 0;
 
     setTagData((prevData) => ({
       tagsId: [...prevData.tagsId, prevData.tagsId.length],
@@ -48,8 +46,7 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
       selectedItems: [...prevData.selectedItems, null],
       modalVisible: [...prevData.modalVisible, false],
     }));
-
-    // setModalVisible((prevVisible) => [...prevVisible, true]);
+    setitemData(tagData);
   };
 
   const toggleModal = (index) => {
@@ -59,9 +56,6 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
         idx === index ? !vis : vis
       ),
     }));
-    // setModalVisible((prevVisible) =>
-    //   prevVisible.map((vis, idx) => (idx === index ? !vis : vis))
-    // );
   };
 
   const handleSelect = (index, item) => {
@@ -87,6 +81,7 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
         idx === index ? ((Number(data.y) / size.height) * 100).toFixed(2) : val
       ),
     }));
+    setitemData(tagData);
   };
   console.log(fileUrl);
 
@@ -119,9 +114,8 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
                 }}
                 onClick={(e) => {
                   e.stopPropagation();
-                  //   if (!modalVisible[index]) {
+
                   toggleModal(index);
-                  //   }
                 }}
               >
                 <CircleButton
