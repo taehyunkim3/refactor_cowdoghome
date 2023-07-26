@@ -1,9 +1,9 @@
 // SocialLogin.jsx
 import { useMutation } from "@tanstack/react-query";
-import { CircleImage } from "../../../../components/shared";
 import { SNSLoginBox, SNSLoginBtn, SNSLoginText } from "./style";
 import { kakaoLoginApi } from "../../../../api/socialApi";
 import { useEffect, useState } from "react";
+import { CircleImage } from "../../../../components";
 
 // export const SocialLogin = () => {
 //   const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
