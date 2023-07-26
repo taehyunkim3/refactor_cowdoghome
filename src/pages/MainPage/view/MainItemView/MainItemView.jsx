@@ -1,4 +1,4 @@
-import { ItemCardComponent } from "../components";
+import { ItemCardComponent } from "../../components";
 import { ItemCardWrapper } from "./style";
 
 export const MainItemView = ({ pageData }) => {

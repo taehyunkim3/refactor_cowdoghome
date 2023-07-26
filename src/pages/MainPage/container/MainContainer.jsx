@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { MainBannerView, MainItemView } from "../view";
+
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { incrementPageIndex } from "../../../redux";
 import { useMainPageData } from "./hooks";
 import { imageUrl } from "./dummy";
+import { MainBannerView, MainItemView } from "../view";
 
 export const MainContainer = () => {
   const dispatch = useDispatch();
