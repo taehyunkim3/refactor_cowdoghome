@@ -15,6 +15,8 @@ export const ItemDetailView = ({
   price,
   discountprice,
   benefit,
+  color,
+  size,
 }) => {
   const [currentSelectedSelector, serCurrentSelectedSelector] = useState(0);
 
@@ -198,7 +200,7 @@ export const ItemDetailView = ({
       >
         <Selector
           title="컬러"
-          options={["haru", "urah", "haruu"]}
+          options={color}
           focus={!selectedOption[0]}
           onClick={() => {
             serCurrentSelectedSelector(0);
@@ -210,7 +212,7 @@ export const ItemDetailView = ({
         />
         <Selector
           title="사이즈"
-          options={selectedOption[0] ? ["h3aru", "ur2ah", "h5aruu"] : []}
+          options={selectedOption[0] ? size : []}
           focus={selectedOption[0]}
           onClick={() => {
             selectedOption[0] && serCurrentSelectedSelector(1);
@@ -263,6 +265,7 @@ export const ItemDetailView = ({
             onClickPlus={clickPlus}
             onClickMinus={clickMinus}
             onClickDelete={deleteProduct}
+            itemtext={itemText}
           />
         );
       })}

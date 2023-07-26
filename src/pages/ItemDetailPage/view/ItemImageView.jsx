@@ -1,5 +1,11 @@
+import { useState } from "react";
+
 export const ItemImageView = ({ imageUrl }) => {
-  const array = Array(3).fill(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const handleClickImage = (index) => {
+    setSelectedImageIndex(index);
+  };
 
   return (
     <div
@@ -29,10 +35,13 @@ export const ItemImageView = ({ imageUrl }) => {
                   position: "relative",
                   width: "56px",
                   height: "56px",
-                  border: "none",
                   backgroundColor: "#ededed",
                   overflow: "hidden",
                   borderRadius: "4px",
+                  border:
+                    selectedImageIndex === i
+                      ? "4px solid #35c5f0"
+                      : "0px solid #35c5f0",
                 }}
               >
                 <div
@@ -45,6 +54,9 @@ export const ItemImageView = ({ imageUrl }) => {
                     left: "50%",
                     transform: "translate(-50%, -50%)",
                     transition: "transform .2s",
+                  }}
+                  onClick={() => {
+                    handleClickImage(i);
                   }}
                 >
                   <img src={e} style={{ width: "100%", height: "100%" }} />
@@ -69,9 +81,7 @@ export const ItemImageView = ({ imageUrl }) => {
             maxWidth: 600,
           }}
         >
-          <div style={{ backgroundColor: "blue", flex: 1 }}>
-            image 들어갈 곳
-          </div>
+          <img src={imageUrl[selectedImageIndex]} />
         </div>
       </div>
     </div>
