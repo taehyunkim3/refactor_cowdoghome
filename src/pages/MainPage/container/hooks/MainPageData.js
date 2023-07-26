@@ -16,12 +16,19 @@ export const useMainPageData = () => {
     };
   }
 
-  const firstPageData = data.slice(0, 12);
-  const secondPageData = data.slice(12, 25);
-  const lastPageData = data.slice(25);
+  const groupByPage = (data, itemsPerPage) => {
+    return data.reduce((acc, curr, i) => {
+      if (i % itemsPerPage === 0) acc.push([]);
+      acc[acc.length - 1].push(curr);
+      return acc;
+    }, []);
+  };
+
+  const itemsPerPage = 12;
+  const groupedData = groupByPage(data, itemsPerPage);
 
   return {
-    data: [[...firstPageData], [...secondPageData], [...lastPageData]],
+    data: groupedData,
     isLoading,
   };
 };

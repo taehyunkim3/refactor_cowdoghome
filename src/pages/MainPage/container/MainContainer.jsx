@@ -4,12 +4,9 @@ import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { incrementPageIndex } from "../../../redux";
 import { useMainPageData } from "./hooks";
-import { DummyData, imageUrl } from "./dummy";
+import { imageUrl } from "./dummy";
 
-//TODO : Container
-//TODO : data hook
-
-export const MainContainer = ({}) => {
+export const MainContainer = () => {
   const dispatch = useDispatch();
   const pageIndex = useSelector((state) => state.pageIndex);
 
@@ -33,25 +30,10 @@ export const MainContainer = ({}) => {
     <div style={{ display: "flex", flexDirection: "column" }}>
       <MainBannerView imageUrl={imageUrl} />
       {data.slice(0, pageIndex).map((e, i) => {
-        const pageData = e[i];
-        const createdAt = pageData["User.createdAt"];
-        const nickname = pageData["User.nickname"];
-        const profileImage = pageData["User.profileImgUrl"];
-        const id = pageData.detailsId;
-        const contentImage = pageData.imgUrl;
-        return (
-          <MainItemView
-            key={i}
-            id={id}
-            nickname={nickname}
-            profileImage={profileImage}
-            contentImage={contentImage}
-          />
-        );
+        const pageData = e;
+        return <MainItemView key={i} pageData={pageData} />;
       })}
-      <div ref={ref} style={{ padding: 20, boxSizing: "border-box" }}>
-        sdf
-      </div>
+      <div ref={ref} style={{ padding: 20, boxSizing: "border-box" }}></div>
     </div>
   );
 };

@@ -1,34 +1,22 @@
-import styled from "styled-components";
 import { ItemCardComponent } from "../components";
+import { ItemCardWrapper } from "./style";
 
-export const ItemCardWrapper = styled.div`
-  display: grid;
-  margin-top: 30px;
-  gap: 15px;
-  width: 100%;
-
-  @media (max-width: 375px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  @media (min-width: 768px) and (max-width: 999px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media (min-width: 1000px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-`;
-
-export const MainItemView = ({ nickname, profileImage, contentImage }) => {
-  const array = Array(12).fill(0);
-
+export const MainItemView = ({ pageData }) => {
   return (
     <ItemCardWrapper>
-      {array.map((e, i) => {
+      {pageData.map((e, i) => {
+        const createdAt = e["User.createdAt"];
+        const nickname = e["User.nickname"];
+        const profileImage = e["User.profileImgUrl"];
+        const id = e.detailsId;
+        const contentImage = e.imgUrl;
         return (
           <ItemCardComponent
+            id={id}
             nickname={nickname}
             profileImage={profileImage}
             contentImage={contentImage}
+            createdAt={createdAt}
             key={i}
           />
         );
