@@ -12,6 +12,7 @@ export const OnPositionBubble = ({
   imageUrl,
   icon = "plus",
   type = "small",
+  onClickFunction = () => {},
 }) => {
   let bubbleX = "5%";
   let bubbleY;
@@ -27,7 +28,10 @@ export const OnPositionBubble = ({
   }
   const navigate = useNavigate();
   return (
-    <div style={{ position: "absolute", top: top, left: left }}>
+    <div
+      style={{ position: "absolute", top: top, left: left }}
+      onClick={onClickFunction}
+    >
       <CircleButton icon={icon} type={type} />
       <ItemDetailBubble
         x={bubbleX}

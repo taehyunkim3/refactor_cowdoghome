@@ -16,19 +16,19 @@ const baseUrl = "https://cowdoghome.store/api";
 //     }
 // }
 
-// export const getDeskDetail = async (id) => { // 상세
-//     try {
-//         const { data } = await axios.get(`${baseUrl}/desks/${id}`);
-//         return data;
-//     } catch (e) {
-//         throw new Error(e.response.data.msg);
-//     }
-// }
+export const getDeskDetail = async (id) => { // 상세
+    try {
+        const { data } = await axios.get(`${baseUrl}/detail/${id}`);
+        return data;
+    } catch (e) {
+        throw new Error(e.response.data.msg);
+    }
+}
 
 
 export const postHousePost = async (post) => { // 사진전송
     try {
-        // const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
         console.log('🐹게시요청');
 
         console.log("postDesk" + JSON.stringify(post));
@@ -48,8 +48,8 @@ export const postHousePost = async (post) => { // 사진전송
 
         console.log(JSON.stringify(imageData) + "🏠")
         const dataWithUrl = { ...post, imageUrl: imageData.data.url }
-        // const formedToken = { headers: { "Authorization": `Bearer ${token}` } };
-        const { data } = await axios.post(`${baseUrl}/detail`, dataWithUrl);
+        const formedToken = { headers: { "Authorization": `Bearer ${token}` } };
+        const { data } = await axios.post(`${baseUrl}/detail`, dataWithUrl, formedToken);
         return data;
     } catch (e) {
         alert(e.response.data.msg);
