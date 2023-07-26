@@ -22,20 +22,28 @@ export const Headers = ({}) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    const token = window.localStorage.getItem("token");
     const checkLoginStatus = async () => {
-      try {
-        const serverResponse = await axios.get("https://cowdoghome.store/api/userinfo",{
-          headers: { Cowdog: token },
-        });
+      const token = window.localStorage.getItem("token");
 
-        if (serverResponse.data.user) {
+      if (!token) {
+        setLoggedIn(false);
+        return;
+      }
+      try {
+        const response = await axios.get(
+          "https://cowdoghome.store/api/userinfo",
+          {
+            headers: { Cowdog: `Bearer ${token}` },
+          }
+        );
+
+        if (response.data.user) {
           setLoggedIn(true);
         } else {
           setLoggedIn(false);
         }
       } catch (error) {
-        console.error("Login failed", error);
+        console.error("Login check failed", error);
         setLoggedIn(false);
       }
     };
@@ -55,11 +63,15 @@ export const Headers = ({}) => {
   }, []);
 
   const handleLogout = async () => {
-    console.log("logging out");
+    const token = window.localStorage.getItem("token");
+
     try {
-      const response = await axios.get("https://cowdoghome.store/api/logout");
+      const response = await axios.get("https://cowdoghome.store/api/logout", {
+        headers: { Cowdog: `Bearer ${token}` },
+      });
 
       if (response.data.message === "로그아웃에 성공하였습니다.") {
+        window.localStorage.removeItem("token");
         setLoggedIn(false);
       } else {
         console.error("Logout failed");

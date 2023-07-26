@@ -21,8 +21,6 @@ export const LoginForm = () => {
     });
   };
 
-  console.log(formValues);
-
   const login = async (email, password) => {
     try {
       const response = await axios.post("https://cowdoghome.store/api/login", {
