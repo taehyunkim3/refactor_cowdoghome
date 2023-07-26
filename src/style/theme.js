@@ -1,31 +1,27 @@
-const deviceSizes = {
-  mobile: "768px",
-  laptop: "1024px",
-  desktop: "1256px",
-};
-
-const colors = {
-  mainColor: "#35c5f0",
-};
-
-const device = {
-  mobile: `screen and (min-width: ${deviceSizes.mobile})`,
-  tablet: `screen and (min-width: ${deviceSizes.laptop})`,
-  laptop: `screen and (min-width: ${deviceSizes.desktop})`,
+const size = {
+  mobile: "375px",
+  tablet: "768px",
+  desktop: "1000px",
 };
 
 export const theme = {
-  colors,
-  device,
+  device: {
+    mobile: `(max-width: ${size.mobile})`,
+    tablet: `(min-width: ${size.tablet}) and (max-width: ${size.desktop})`,
+    desktop: `(min-width: ${size.desktop})`,
+  },
 };
 
-// 반응형
-// @media ${({ theme }) => theme.device.desktop} {
-//   flex-direction: column;
-//   font-size: ${({ theme }) => theme.fontSizes.paragraph};
+// 사용법
+
+// @media ${props => props.theme.device.mobile} {
+//  ...
 // }
 
-// 색상
-// const MainText = styled.div`
-//   color: ${props => props.theme.mainColor};
-// `
+// @media ${props => props.theme.device.tablet} {
+//  ...
+// }
+
+// @media ${props => props.theme.device.desktop} {
+//  ...
+// }

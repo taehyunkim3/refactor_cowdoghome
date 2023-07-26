@@ -1,5 +1,5 @@
-import { Header, TopBanner } from "../../../components";
-import { Content, Footer, Wrapper } from "./style";
+import { Footer, Header, TopBanner } from "../../../components";
+import { Content, Wrapper } from "./style";
 
 export const ItemDetailLayout = ({ children }) => {
   return (
@@ -7,7 +7,7 @@ export const ItemDetailLayout = ({ children }) => {
       <TopBanner />
       <Header />
       <Content>{children}</Content>
-      <Footer>Footer</Footer>
+      <Footer />
     </Wrapper>
   );
 };

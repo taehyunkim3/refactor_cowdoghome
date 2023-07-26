@@ -16,6 +16,11 @@ export const Content = styled.div`
   padding: 0 5%;
   margin-top: 40px;
   margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Footer = styled.div`
