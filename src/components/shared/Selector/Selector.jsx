@@ -13,6 +13,7 @@ export const Selector = ({
   onClick,
   storeValue,
   isSelectFinished,
+  storeAdditionalPrices,
 }) => {
   const [selected, setSelected] = useState(null);
 
@@ -21,6 +22,7 @@ export const Selector = ({
   const handleSelect = (event) => {
     storeValue(options[event.target.value]);
     setSelected(event.target.value);
+    storeAdditionalPrices && storeAdditionalPrices(+event.target.value);
   };
 
   const handleClick = (event) => {

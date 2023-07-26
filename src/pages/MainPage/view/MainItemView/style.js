@@ -9,10 +9,16 @@ export const ItemCardWrapper = styled.div`
   @media (max-width: 375px) {
     grid-template-columns: repeat(1, 1fr);
   }
-  @media (min-width: 768px) and (max-width: 999px) {
+
+  @media (min-width: 769px) and (max-width: 917px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 918px) and (max-width: 1154px) {
     grid-template-columns: repeat(3, 1fr);
   }
-  @media (min-width: 1000px) {
+
+  @media (min-width: 1154px) {
     grid-template-columns: repeat(4, 1fr);
   }
 `;

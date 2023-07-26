@@ -26,7 +26,7 @@ export const BannerContainer = styled.div`
 
 export const TextContainer = styled.div`
   position: absolute;
-  top: 75%;
+  top: 72%;
   width: 100%;
   color: white;
   padding-left: 24px;
@@ -37,8 +37,8 @@ export const TextContainer = styled.div`
 `;
 
 export const BannerText = styled.p`
-  font-size: 2.8vw;
-  font-weight: 700;
+  font-size: 2.7vw;
+  font-weight: 600;
   font-family: "Jal_Haru";
 `;
 

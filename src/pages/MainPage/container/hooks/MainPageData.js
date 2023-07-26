@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { MainPageDataFetch } from "../../../../api";
+import { useState } from "react";
 
 export const useMainPageData = () => {
   const { getMainPageData } = MainPageDataFetch();

@@ -16,11 +16,10 @@ export const useItemDetailPageData = () => {
     };
   }
 
-  console.log(data);
-
   const colorOptions = JSON.parse(data["ColorOptions.color"]);
   const images = JSON.parse(data["ItemImgLists.itemImg"]);
-  const size = data["SizeOptions.size"];
+  const size = JSON.parse(data["SizeOptions.size"]);
+
   const {
     benefit,
     brandName,
@@ -42,7 +41,7 @@ export const useItemDetailPageData = () => {
     itemName,
     price,
     rating,
-    size: JSON.parse(size),
+    size,
     images,
     colorOptions,
   };

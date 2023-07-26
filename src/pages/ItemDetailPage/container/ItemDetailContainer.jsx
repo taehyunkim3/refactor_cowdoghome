@@ -1,4 +1,4 @@
-import { ItemDetailView, ItemImageView } from "../view";
+import { ItemImageView, ItemDetailView } from "../view";
 import { useItemDetailPageData } from "./hooks";
 
 export const ItemDetailContainer = () => {
@@ -17,10 +17,8 @@ export const ItemDetailContainer = () => {
     isLoading,
   } = useItemDetailPageData();
 
-  console.log(colorOptions);
-
   if (isLoading) {
-    return <div>loading~~</div>;
+    return <div>loading</div>;
   }
   return (
     <>

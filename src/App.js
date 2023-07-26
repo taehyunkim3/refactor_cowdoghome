@@ -20,7 +20,6 @@ export const App = () => {
           </Provider>
         </ThemeProvider>
       </QueryClientProvider>
-
     </>
   );
 };
