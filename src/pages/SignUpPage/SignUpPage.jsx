@@ -21,13 +21,38 @@ import { ErrorMsg } from "./components/InputForm/style";
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [email, setEmail] = useState("");
   const [domain, setDomain] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [nickname, setNickname] = useState("");
   const [error, setError] = useState("");
-  const queryClient = useQueryClient();
+
+  const validateEmail = (input) => {
+    const re = /^[\w.-]+@[\w.-]+\.(co\.kr|com|net)$/;
+    return re.test(String(input).toLowerCase());
+  };
+
+  const handleEmailChange = (newEmail) => {
+    setEmail(newEmail);
+    if (!validateEmail(`${newEmail}@${domain}`))
+      setError((prev) => ({
+        ...prev,
+        email: "이메일 형식이 올바르지 않습니다.",
+      }));
+    else setError((prev) => ({ ...prev, email: "" }));
+  };
+
+  const handleDomainChange = (newDomain) => {
+    setDomain(newDomain);
+    if (!validateEmail(`${email}@${newDomain}`))
+      setError((prev) => ({
+        ...prev,
+        email: "이메일 형식이 올바르지 않습니다.",
+      }));
+    else setError((prev) => ({ ...prev, email: "" }));
+  };
 
   const mutation = useMutation(registerUser, {
     onSuccess: () => {
@@ -39,46 +64,48 @@ export const SignUpPage = () => {
     },
   });
 
-  const validateEmail = (input) => {
-    const re = /^[\w.-]+@[\w.-]+\.(co\.kr|com|net)$/;
-    return re.test(String(input).toLowerCase());
+  const handleRegister = () => {
+    if (
+      error.email ||
+      error.password ||
+      error.passwordConfirm ||
+      error.nickname ||
+      !email ||
+      !domain ||
+      !password ||
+      !passwordConfirm ||
+      !nickname
+    ) {
+      alert("모든 필드를 채우고 유효성 검사를 통과해야 합니다.");
+      return;
+    }
+    mutation.mutate({
+      email: `${email}@${domain}`,
+      password,
+      passwordConfirm,
+      nickname,
+    });
+    navigate("/login");
   };
 
   useEffect(() => {
-    if (!validateEmail(`${email}@${domain}`)) {
-      setError("유효한 이메일을 입력해주세요.");
-    } else if (password !== passwordConfirm) {
-      setError("Passwords do not match");
-    } else {
-      setError("");
-    }
-  }, [email, domain, password, passwordConfirm]);
+    if (password !== passwordConfirm)
+      setError((prev) => ({
+        ...prev,
+        passwordConfirm: "비밀번호가 일치하지 않습니다.",
+      }));
+    else setError((prev) => ({ ...prev, passwordConfirm: "" }));
+  }, [password, passwordConfirm]);
 
-  const handleEmailChange = (newEmail) => {
-    setEmail(newEmail);
-    if (!validateEmail(`${newEmail}@${domain}`)) {
-      setError("Invalid email address");
+  const handleNicknameChange = (value) => {
+    setNickname(value);
+    if (value.length < 2) {
+      setError((prev) => ({ ...prev, nickname: "2자 이상 입력해주세요." }));
+    } else if (value.length > 15) {
+      setError((prev) => ({ ...prev, nickname: "15자 이하 입력해주세요." }));
     } else {
-      setError("");
+      setError((prev) => ({ ...prev, nickname: "" }));
     }
-  };
-
-  const handleDomainChange = (newDomain) => {
-    setDomain(newDomain);
-    if (!validateEmail(`${email}@${newDomain}`)) {
-      setError("Invalid email address");
-    } else {
-      setError("");
-    }
-  };
-
-  const handleRegister = () => {
-    if (error) {
-      alert(error);
-      return;
-    }
-    mutation.mutate({ email: `${email}@${domain}`, password, nickname });
-    navigate("/login");
   };
 
   return (
@@ -113,7 +140,7 @@ export const SignUpPage = () => {
             onEmailChange={handleEmailChange}
             onDomainChange={handleDomainChange}
           >
-            {error && <ErrorMsg style={{}}>{error}</ErrorMsg>}
+            {error.email && <ErrorMsg style={{}}>{error.email}</ErrorMsg>}
           </EmailForm>
         </div>
         <div>
@@ -139,7 +166,8 @@ export const SignUpPage = () => {
             title="닉네임"
             placeholder="별명 (2~15자)"
             msg="다른 유저와 겹치지 않도록 입력해주세요. (2~15자)"
-            onChange={(value) => setNickname(value)}
+            name="nickname"
+            onChange={handleNicknameChange}
           />
         </div>
 
@@ -153,7 +181,13 @@ export const SignUpPage = () => {
 
         <QusetionBox>
           <QuestionText>이미 아이디가 있으신가요?</QuestionText>
-          <LoginSpan>로그인</LoginSpan>
+          <LoginSpan
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            로그인
+          </LoginSpan>
         </QusetionBox>
       </ContentWrapper>
     </SignUpLayout>

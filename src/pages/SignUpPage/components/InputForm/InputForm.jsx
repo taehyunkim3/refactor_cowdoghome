@@ -13,29 +13,27 @@ export const InputForm = ({
 
   const handleChange = (e) => {
     setInput(e.target.value);
-
     if (onChange) {
       onChange(e.target.value);
     }
-    switch (type) {
-      case "password":
-        if (
-          !/(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}/.test(e.target.value)
-        ) {
-          setError("Invalid password");
-        } else {
-          setError("");
-        }
-        break;
-      case "nickname":
-        if (e.target.value.length < 2 || e.target.value.length > 15) {
-          setError("Invalid nickname");
-        } else {
-          setError("");
-        }
-        break;
-      default:
-        break;
+    if (type === "password") {
+      if (!/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}/.test(e.target.value)) {
+        setError("비밀번호는 영문, 숫자를 포함하여 8자 이상");
+      } else {
+        setError("");
+      }
+    } else if (type === "nickname") {
+      if (e.target.value.length < 2) {
+        setError("2자 이상 입력해주세요");
+      } else if (e.target.value.length > 15) {
+        setError("15자 이하 입력해주세요");
+      } else {
+        setError("");
+      }
+    }
+
+    if (onChange) {
+      onChange(e.target.value, error);
     }
   };
 

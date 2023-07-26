@@ -11,6 +11,7 @@ import { Button } from "../../../../components";
 export const EmailForm = ({ onEmailChange, onDomainChange, children }) => {
   const [email, setEmail] = useState("");
   const [domain, setDomain] = useState("");
+  const [isCustomDomain, setIsCustomDomain] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -18,6 +19,16 @@ export const EmailForm = ({ onEmailChange, onDomainChange, children }) => {
   };
 
   const handleDomainChange = (e) => {
+    if (e.target.value === "custom") {
+      setIsCustomDomain(true);
+    } else {
+      setIsCustomDomain(false);
+      setDomain(e.target.value);
+      onDomainChange(e.target.value);
+    }
+  };
+
+  const handleCustomDomainChange = (e) => {
     setDomain(e.target.value);
     onDomainChange(e.target.value);
   };
@@ -41,6 +52,7 @@ export const EmailForm = ({ onEmailChange, onDomainChange, children }) => {
           height: "40px",
         }}
       >
+      
         <div style={{ flex: 1 }}>
           <Input
             type="text"
@@ -70,7 +82,6 @@ export const EmailForm = ({ onEmailChange, onDomainChange, children }) => {
             <option value="nate.com">nate.com</option>
             <option value="hotmail.com">hotmail.com</option>
             <option value="icloud.com">icloud.com</option>
-            {/* 도메인 추가 시 여기에 추가해주시면 됩니다! */}
           </SelectorStyle>
           {children}
           <SpanStyle>
