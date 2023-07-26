@@ -7,16 +7,22 @@ export const InputForm = ({
   msg = "",
   placeholder = "",
   onChange,
+  isPasswordConfirm = false, // Confirming password
 }) => {
   const [input, setInput] = useState("");
+  const [confirmInput, setConfirmInput] = useState(""); // Confirm password
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setInput(e.target.value);
-    if (onChange) {
-      onChange(e.target.value);
-    }
-    if (type === "password") {
+
+    if (isPasswordConfirm) {
+      if (input !== e.target.value) {
+        setError("비밀번호가 일치하지 않습니다");
+      } else {
+        setError("");
+      }
+    } else if (type === "password") {
       if (!/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}/.test(e.target.value)) {
         setError("비밀번호는 영문, 숫자를 포함하여 8자 이상");
       } else {
@@ -34,6 +40,15 @@ export const InputForm = ({
 
     if (onChange) {
       onChange(e.target.value, error);
+    }
+  };
+
+  const handleConfirmChange = (e) => {
+    setConfirmInput(e.target.value);
+    if (input !== e.target.value) {
+      setError("비밀번호가 일치하지 않습니다");
+    } else {
+      setError("");
     }
   };
 
@@ -61,6 +76,14 @@ export const InputForm = ({
           placeholder={placeholder}
           onChange={handleChange}
         />
+        {isPasswordConfirm && (
+          <Input
+            type={type}
+            value={confirmInput}
+            placeholder="Confirm Password"
+            onChange={handleConfirmChange}
+          />
+        )}
       </label>
 
       <div

@@ -28,11 +28,6 @@ export const EmailForm = ({ onEmailChange, onDomainChange, children }) => {
     }
   };
 
-  const handleCustomDomainChange = (e) => {
-    setDomain(e.target.value);
-    onDomainChange(e.target.value);
-  };
-
   return (
     <>
       <b

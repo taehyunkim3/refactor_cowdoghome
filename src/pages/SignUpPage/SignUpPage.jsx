@@ -15,19 +15,46 @@ import {
 } from "./style";
 import { EmailForm, InputForm } from "./components";
 import { useEffect, useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { registerUser } from "../../api/signUpApi";
 import { ErrorMsg } from "./components/InputForm/style";
+import axios from "axios";
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
-  const queryClient = useQueryClient();
   const [email, setEmail] = useState("");
   const [domain, setDomain] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [confirm, setConfirm] = useState("");
   const [nickname, setNickname] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState({
+    email: null,
+    password: null,
+    passwordConfirm: null,
+    nickname: null,
+  });
+
+  useEffect(() => {
+    if (password.length < 8) {
+      setError((prev) => ({
+        ...prev,
+        password: "비밀번호는 8자 이상이어야 합니다.",
+      }));
+    } else {
+      setError((prev) => ({ ...prev, password: "" }));
+    }
+  }, [password]);
+
+  useEffect(() => {
+    if (confirm === "") {
+      setError((prev) => ({ ...prev, confirm: "" }));
+    } else if (password !== confirm) {
+      setError((prev) => ({
+        ...prev,
+        confirm: "비밀번호가 일치하지 않습니다.",
+      }));
+    } else {
+      setError((prev) => ({ ...prev, passwordConfirm: "" }));
+    }
+  }, [password, confirm]);
 
   const validateEmail = (input) => {
     const re = /^[\w.-]+@[\w.-]+\.(co\.kr|com|net)$/;
@@ -36,61 +63,73 @@ export const SignUpPage = () => {
 
   const handleEmailChange = (newEmail) => {
     setEmail(newEmail);
-    if (!validateEmail(`${newEmail}@${domain}`))
+    if (!newEmail) {
+      setError((prev) => ({
+        ...prev,
+        email: "이메일을 입력해주세요.",
+      }));
+    } else if (!validateEmail(`${newEmail}@${domain}`)) {
       setError((prev) => ({
         ...prev,
         email: "이메일 형식이 올바르지 않습니다.",
       }));
-    else setError((prev) => ({ ...prev, email: "" }));
+    } else {
+      setError((prev) => ({ ...prev, email: "" }));
+    }
   };
 
   const handleDomainChange = (newDomain) => {
     setDomain(newDomain);
-    if (!validateEmail(`${email}@${newDomain}`))
+    if (!newDomain) {
+      setError((prev) => ({ ...prev, email: "도메인을 입력해주세요." }));
+    } else if (!validateEmail(`${email}@${newDomain}`)) {
       setError((prev) => ({
         ...prev,
         email: "이메일 형식이 올바르지 않습니다.",
       }));
-    else setError((prev) => ({ ...prev, email: "" }));
+    } else {
+      setError((prev) => ({ ...prev, email: null }));
+    }
   };
 
-  const mutation = useMutation(registerUser, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("");
-      console.log("success");
-    },
-    onError: (error) => {
-      console.log("Error", error.message);
-    },
-  });
+  const registerUser = async (userData) => {
+    console.log("Calling registerUser with user data: ", userData);
+    try {
+      const response = await axios.post(
+        "https://cowdoghome.store/api/register",
+        userData
+      );
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.log("Error", error);
+      throw error;
+    }
+  };
 
-  const handleRegister = () => {
-    if (
-      error.email === "" ||
-      error.password === "" ||
-      error.passwordConfirm === "" ||
-      error.nickname === ""
-    ) {
+  const handleRegister = async () => {
+    console.log("handleRegister is called"); // Add this line
+    if (!email || !domain || !password || !confirm || !nickname) {
       alert("모든 필드를 채우고 유효성 검사를 통과해야 합니다.");
       return;
     }
-    mutation.mutate({
+    const user = {
       email: `${email}@${domain}`,
-      password,
-      passwordConfirm,
       nickname,
-    });
-    navigate("/login");
-  };
+      password,
+      confirm,
+    };
 
-  useEffect(() => {
-    if (password !== passwordConfirm)
-      setError((prev) => ({
-        ...prev,
-        passwordConfirm: "비밀번호가 일치하지 않습니다.",
-      }));
-    else setError((prev) => ({ ...prev, passwordConfirm: "" }));
-  }, [password, passwordConfirm]);
+    navigate("/login");
+
+    console.log("Calling mutation with user data: ", user);
+    try {
+      await registerUser(user);
+      console.log("User registration succeeded");
+    } catch (error) {
+      console.log("Error during user registration", error.message);
+    }
+  };
 
   const handleNicknameChange = (value) => {
     setNickname(value);
@@ -145,6 +184,7 @@ export const SignUpPage = () => {
             placeholder="비밀번호"
             msg="영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요."
             onChange={(value) => setPassword(value)}
+            error={error.password}
           />
         </div>
         <div>
@@ -153,7 +193,8 @@ export const SignUpPage = () => {
             title="비밀번호 확인"
             placeholder="비밀번호 확인"
             msg="영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요."
-            onChange={(value) => setPasswordConfirm(value)}
+            onChange={(value) => setConfirm(value)}
+            error={error.passwordConfirm}
           />
         </div>
         <div>
