@@ -6,16 +6,6 @@ export const CommonLayout = styled.div`
   flex-direction: column;
   min-height: 100vh;
 `;
-// export const HouseDetailPageLayout = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   flex: 1;
-
-//   width: 100%;
-//   min-height: 10vh;
-//   position: relative;
-//   z-index: 0;
-// `;
 
 export const MainLayout = styled.div`
   max-width: 1256px;
@@ -34,27 +24,25 @@ export const MainLayoutInner = styled.div`
 
 export const MainImageContainer = styled.div`
   width: 720px; //고정값필요함
-
+  height: auto;
   position: relative;
 `;
 
 export const MainImage = styled.div`
   position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
   overflow: hidden;
-  padding-bottom: 133.333%;
-  .imageratio {
-    //이미지 비율 설정
-    //
-  }
+  // padding-bottom: 133.333%;
+  padding-bottom: ${(props) => props.imgHeight}%;
+
   img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; // 이미지의 비율을 유지하면서 가능한 많이 채우는 설정입니다.
+    object-fit: contain;
   }
 `;
 

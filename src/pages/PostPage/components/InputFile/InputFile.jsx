@@ -74,8 +74,6 @@ const initialInput = {
 export const InputFile = ({}) => {
   const { setPostData, postData } = useContext(PostPageContext);
 
-  // const { fileData, otherData, onSubmitHandler, setFileData, setOtherData } =
-  //   useContext(PostPageContext);
   const [itemTags, setItemTags] = useState([]);
   const fileUpload = useRef();
   const [fileUrl, setFileUrl] = useState(null);
@@ -87,11 +85,7 @@ export const InputFile = ({}) => {
     useWebWorker: true,
   };
   const [componentRef, size] = useComponentSize(fileUrl);
-  // const width = componentRef.current?.clientWidth ?? 0;
-  // const height = componentRef.current?.clientHeight ?? 0;
   const onChangeImage = async (e) => {
-    // const file = e.target.files[0];
-    // setPostData(file);
     const imageFile = e.target.files[0];
 
     try {
@@ -99,7 +93,6 @@ export const InputFile = ({}) => {
       const imgUrl = URL.createObjectURL(compressedFile);
 
       setFileUrl(imgUrl);
-      // setInput({ ...input, imageUrl: compressedFile });
       setPostData({ ...input, imgUrl: compressedFile });
     } catch (error) {
       console.error(error);
@@ -122,19 +115,6 @@ export const InputFile = ({}) => {
             setInput={setInput}
             input={input}
           />
-          {/* <ImageSetting ref={componentRef}>
-            <img src={fileUrl} width="100%" />
-
-            <DraggablePoint
-              fileUrl={fileUrl}
-              width={width}
-              height={height}
-              setAxisPosition={setAxisPosition}
-              axisPosition={axisPosition}
-              // id={id}
-              // itemId={itemId}
-            />
-          </ImageSetting> */}
         </>
       ) : (
         <>
@@ -158,7 +138,6 @@ export const InputFile = ({}) => {
               </Camera>
               <p className="bigText">사진을 끌어다놓아요 </p>
               <p className="smallText">1장만 업로드가 가능해요.</p>
-              {/* <input class="upload-name" value="첨부파일" placeholder="첨부파일" /> */}
               <label for="file" className="pcload">
                 PC에서 불러오기
               </label>
@@ -182,6 +161,20 @@ export const InputFile = ({}) => {
           value={postData.content}
           placeholder="어떤 사진인지 짧은 소개로 시작해보세요."
         />
+        {fileUrl && (
+          <InputFileLayout>
+            <label for="file" className="pcload">
+              사진 다시 불러오기
+            </label>
+            <input
+              type="file"
+              id="file"
+              accept="image/*"
+              onChange={onChangeImage}
+              ref={fileUpload}
+            />
+          </InputFileLayout>
+        )}
       </TextBox>
     </>
   );
