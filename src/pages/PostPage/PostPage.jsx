@@ -43,12 +43,8 @@ export const PostPage = ({}) => {
       value={{
         postData,
         setPostData,
-        fileData, //삭제예정
-        setFileData, //삭제예정
         itemData,
         setitemData,
-        contentData, //삭제예정
-        setContentData, //삭제예정
         onSubmitHandler,
       }}
     >
