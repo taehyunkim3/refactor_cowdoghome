@@ -13,7 +13,7 @@ export const ImageTagModal = ({
   const { data, isLoading, isError, error } = useQuery(["item"], () =>
     getItems()
   );
-
+  //
   const handleSelect = (item) => {
     console.log(
       "TAGMODALHANDLESELECT🐹" + item.itemId + item.brandName + item.itemName

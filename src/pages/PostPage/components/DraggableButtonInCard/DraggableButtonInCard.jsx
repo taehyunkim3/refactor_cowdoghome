@@ -1,31 +1,40 @@
 import Draggable from "react-draggable";
-import { ImageTagModal } from "./tagmodal";
-
+import { ImageTagModal } from "./ImageTagModal";
 import { PostPageContext } from "../../contexts/PostPageContext";
-
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useComponentSize } from "../../hooks";
 import { styled } from "styled-components";
 import { CircleButton } from "../../../../components";
 export const DraggableButtonInCard = ({ fileUrl }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const addButtonRef = useRef(null);
   const { setPostData, postData } = useContext(PostPageContext);
   const initialState = {};
-
   const [tagData, setTagData] = useState(initialState);
   const [componentRef, size] = useComponentSize(fileUrl);
-
+  //
+  // ⬇️ 새로운 태그 추가
   const addNewButton = (e) => {
-    // 모든 모달이 닫혀있는지 확인
     const allModalsClosed = Object.values(tagData).every(
+      // 모든 모달이 닫혀있는지 확인
       (tag) => !tag.modalVisible
     );
-    // 모든 태그가 선택된 아이템을 가지고 있는지 확인
     const allTagsHaveSelectedItem = Object.values(tagData).every(
+      // 모든 태그가 선택된 아이템을 가지고 있는지 확인
       (tag) => tag.selectedItems !== null
     );
-    if (!isEditing || !allModalsClosed || !allTagsHaveSelectedItem) return;
+
+    if (!isEditing) {
+      console.log("editing모드가 아님");
+      return;
+    }
+    if (!allModalsClosed) {
+      console.log("모든 모달이 닫혀있지 않음");
+      return;
+    }
+    // if (!allTagsHaveSelectedItem) {
+    //   console.log("모든 태그가 선택된 아이템을 가지고 있지 않음");
+    //   return;
+    // }  // 이부분을 삭제한 이유 : 모든 아이템을 삭제하는 경우 태그를 추가할 수 없음
 
     if (Object.keys(tagData).length >= 5) {
       return alert("태그는 최대 5개까지 추가할 수 있습니다.");
@@ -51,11 +60,11 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
         },
       };
       console.log("🌈🌈🌈" + JSON.stringify(updatedData));
-
       return updatedData;
     });
   };
-
+  //
+  // ⬇️ 모달 토글
   const toggleModal = (tagId) => {
     setTagData((prevData) => ({
       ...prevData,
@@ -65,10 +74,10 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
       },
     }));
   };
-
+  //
+  // ⬇️ 아이템 선택 시 태그 데이터에 반영
   const handleSelect = (tagId, item) => {
     console.log("HANDLESELECT🔥" + JSON.stringify(tagData));
-
     const selectedItem = {
       itemId: item.itemId,
       brandName: item.brandName,
@@ -77,7 +86,6 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
         ? JSON.parse(item["ItemImgLists.itemImg"])
         : null,
     };
-
     setTagData((prevData) => ({
       ...prevData,
       [tagId]: {
@@ -86,13 +94,11 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
         itemId: item.itemId,
       },
     }));
-
     toggleModal(tagId);
     console.log("🔥🔥🔥" + JSON.stringify(tagData));
   };
   //
-
-  //
+  // ⬇️ 드래그가 끝날 때마다 태그 데이터에 반영
   const handleDrag = (tagId, e, data) => {
     console.log("HANDLEDRAG💧" + JSON.stringify(tagData));
     setTagData((prevData) => {
@@ -106,11 +112,12 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
           percentY: Number(((Number(data.y) / size.height) * 100).toFixed(2)),
         },
       };
-      // setitemData(updatedData);
       return updatedData;
     });
     console.log("💧💧💧" + JSON.stringify(tagData));
   };
+  //
+  // ⬇️ 태그 데이터가 바뀔 때마다 포스트 데이터에 반영
   useEffect(() => {
     const filteredTagData = Object.values(tagData).filter(
       (tag) => tag.selectedItems !== null
@@ -122,7 +129,11 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
     }));
     setPostData({ ...postData, itemData: formedItemData });
   }, [tagData]);
-
+  //
+  const handleDeleteTags = () => {
+    setTagData(initialState);
+  };
+  //
   return (
     <>
       <div
@@ -175,14 +186,7 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
           <StButton onClick={() => setIsEditing(!isEditing)}>
             {isEditing ? "편집완료" : "태그편집하기"}
           </StButton>
-          <StDelete
-            onClick={() => {
-              setTagData(initialState);
-              setIsEditing(false);
-            }}
-          >
-            🗑️
-          </StDelete>
+          <StDelete onClick={handleDeleteTags}>🗑️</StDelete>
         </StDragContainer>
       </div>
     </>
@@ -198,7 +202,7 @@ const StDragContainer = styled.div`
   color: black;
 
   border-radius: 5px;
-  // padding: 1em;
+  // padding: 1em; 이거때문에 오차 생김
   margin: auto;
   user-select: none;
   background: #ffffff;
@@ -210,7 +214,7 @@ const StDragContainer = styled.div`
   z-index: 1;
 `;
 const StDragImage = styled.img`
-  // position: absolute;
+  // position: absolute; 이거때문에 안됨
   top: 0;
   left: 0;
   width: 100%;
