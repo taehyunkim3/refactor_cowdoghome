@@ -11,11 +11,11 @@ export const ItemDetailPageDataFetch = () => {
   const currentItemId = url.split("/").at(-1);
 
   const getItemDetailPageData = async () => {
-    const response = await API.get("", {
+    const response = await API.get(`${currentItemId}`, {
       params: {},
     });
 
-    return response.data.allItems[currentItemId];
+    return response.data.oneItem;
   };
 
   return { getItemDetailPageData };
