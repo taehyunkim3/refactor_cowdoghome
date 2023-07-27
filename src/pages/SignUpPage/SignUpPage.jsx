@@ -103,6 +103,13 @@ export const SignUpPage = () => {
       return response.data;
     } catch (error) {
       console.log("Error", error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.errorMessage
+      ) {
+        return { error: error.response.data.errorMessage };
+      }
       throw error;
     }
   };
@@ -124,8 +131,13 @@ export const SignUpPage = () => {
 
     console.log("Calling mutation with user data: ", user);
     try {
-      await registerUser(user);
+      const response = await registerUser(user);
+      if (response.error) {
+        setError((prev) => ({ ...prev, nickname: response.error }));
+        return;
+      }
       console.log("User registration succeeded");
+      navigate("/login");
     } catch (error) {
       console.log("Error during user registration", error.message);
     }
