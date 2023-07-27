@@ -1,3 +1,4 @@
+import { Footer } from "../../components";
 import { CowDogHomeIcon } from "../../components/shared/Header/CowDogHomeIcon";
 import { LoginForm, SocialLogin } from "./components";
 import {
@@ -36,28 +37,32 @@ export const LoginPage = () => {
   };
 
   return (
-    <LoginLayout>
-      <LoginBox>
-        <LogoBox>
-          <div onClick={handleGoToHome}>
-            <CowDogHomeIcon />
-          </div>
-        </LogoBox>
-        <LoginForm />
-        <UserAccountForm>
-          <UserAccountBtn onClick={handlePasswordReset}>
-            비밀번호 재설정 |
-          </UserAccountBtn>
-          <UserAccountBtn onClick={handleGoToSignUp}> 회원가입</UserAccountBtn>
-        </UserAccountForm>
-        <SocialLogin />
-        <ErrorText onClick={handleProblemLogin}>
-          로그인에 문제가 있으신가요?
-        </ErrorText>
-        <NonMembersBox onClick={handleNoMemberOrder}>
-          비회원 주문하기
-        </NonMembersBox>
-      </LoginBox>
-    </LoginLayout>
+    <Footer>
+      <LoginLayout>
+        <LoginBox>
+          <LogoBox>
+            <div onClick={handleGoToHome}>
+              <CowDogHomeIcon />
+            </div>
+          </LogoBox>
+          <LoginForm />
+          <UserAccountForm>
+            <UserAccountBtn onClick={handlePasswordReset}>
+              비밀번호 재설정 |
+            </UserAccountBtn>
+            <UserAccountBtn onClick={handleGoToSignUp}>
+              회원가입
+            </UserAccountBtn>
+          </UserAccountForm>
+          <SocialLogin />
+          <ErrorText onClick={handleProblemLogin}>
+            로그인에 문제가 있으신가요?
+          </ErrorText>
+          <NonMembersBox onClick={handleNoMemberOrder}>
+            비회원 주문하기
+          </NonMembersBox>
+        </LoginBox>
+      </LoginLayout>
+    </Footer>
   );
 };

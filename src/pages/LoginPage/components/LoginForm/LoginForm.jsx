@@ -21,8 +21,6 @@ export const LoginForm = () => {
     });
   };
 
-  console.log(formValues);
-
   const login = async (email, password) => {
     try {
       const response = await axios.post("https://cowdoghome.store/api/login", {
@@ -50,7 +48,6 @@ export const LoginForm = () => {
     if (formValues.email === "" || formValues.password === "") {
       setError("잘못된 이메일 또는 비밀번호입니다.");
     } else {
-      console.log("Dispatching loginStart");
       login(formValues.email, formValues.password);
     }
   };
