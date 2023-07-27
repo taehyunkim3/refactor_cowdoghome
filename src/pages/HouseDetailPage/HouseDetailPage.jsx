@@ -110,6 +110,7 @@ export const HouseDetailPage = ({}) => {
               <UserProfileContainer
                 name={data.userData.nickname}
                 date={formattedDate}
+                imageUrl={data.userData.profileImgUrl}
               />
             </MainLayoutInner>
           </MainLayout>
