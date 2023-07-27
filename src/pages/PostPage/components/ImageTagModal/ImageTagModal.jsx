@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import styled from "styled-components";
-import { ListItemBubble } from "../../ListItemBubble";
+import { StModalCotainer } from "./style";
+import { ListItemBubble } from "../ListItemBubble";
 import { useQuery } from "@tanstack/react-query";
-import { getItems } from "../../../../../api/houseApi";
+import { getItems } from "../../../../api/houseApi";
 
 export const ImageTagModal = ({
   closeModal,
@@ -70,22 +68,3 @@ export const ImageTagModal = ({
     </StModalCotainer>
   );
 };
-
-const StModalCotainer = styled.div`
-  background-color: white;
-  position: absolute;
-  width: 375px;
-  min-height: 100px;
-  max-height: 450px;
-  top: 40px;
-  border-radius: 10px;
-  padding: 20px;
-  z-index: 1000;
-  overflow: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, and Opera */
-  }
-  border: 1px solid #dddcddff;
-`;

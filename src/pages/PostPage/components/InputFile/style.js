@@ -17,7 +17,6 @@ textarea{
     white-space: pre-line;
     font-size: 14px;
     line-height: 20px;
-    // z-index: 1;
     caret-color: rgb(47, 52, 56);
     border: 1px solid rgb(218, 221, 224);
     border-radius: 4px;
@@ -90,4 +89,55 @@ line-height: 1;
 margin: 0px 0px 12px;
 color: rgb(130, 140, 148);
 margin: 0px 0px 14.5px;
+`;
+
+export const InputFileLayoutContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 430px;
+    height: 430px;
+    background-color: #f7f9fa;
+    margin: 10px;
+`;
+
+
+export const ChangeFileLayout = styled.div`
+text-align: center;
+label {
+  padding: 10px 20px;
+  color: #fff;
+  vertical-align: middle;
+  background-color: #999999;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 10px;
+}
+
+input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+.pcload {
+  margin: 0px;
+  border: 1px solid rgb(218, 221, 224);
+  background: none;
+  font-size: 14px;
+  line-height: 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  font-weight: 400;
+  box-sizing: border-box;
+  text-align: center;
+  color: #828c94;
+  border-radius: 4px;
+}
 `;

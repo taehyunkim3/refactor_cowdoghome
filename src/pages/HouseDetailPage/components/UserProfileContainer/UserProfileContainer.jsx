@@ -1,33 +1,6 @@
-import { styled } from "styled-components";
-import { Button, CircleImage, ItemImage } from "../../../../components";
+import { Button, CircleImage } from "../../../../components";
 import { Hr } from "../Hr/Hr";
-
-const UserProfileLayout = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 50px 0px 20px 0px;
-`;
-
-const UserProfile = styled.div`
-  display: flex;
-
-  .text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 10px;
-    .name {
-      font-size: 16px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    .date {
-      font-size: 14px;
-      color: #999999;
-    }
-  }
-`;
+import { UserProfileLayout, UserProfile } from "./style";
 
 export const UserProfileContainer = ({
   name = "기본이름",
@@ -44,16 +17,9 @@ export const UserProfileContainer = ({
           </div>
         </UserProfile>
         <div style={{ width: "80px" }}>
-          {" "}
           <Button theme="filled" size="small" label="팔로우" />
         </div>
-      </UserProfileLayout>{" "}
-      {/* <UserProfile>
-        <ItemImage size="174px" roundSize="5px" isHover={true} />
-        <ItemImage size="174px" roundSize="5px" isHover={true} />
-        <ItemImage size="174px" roundSize="5px" isHover={true} />
-        <ItemImage size="174px" roundSize="5px" isHover={true} />
-      </UserProfile> */}
+      </UserProfileLayout>
       <div style={{ margin: "40px 0px" }} />
       <Hr />
       <div style={{ margin: "20px 0px" }} />

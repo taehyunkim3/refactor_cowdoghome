@@ -1,28 +1,25 @@
 import { useState, useEffect, useContext } from "react";
-import { LiaSearchSolid } from "react-icons/lia";
 import { ButtonBox, HeaderBox, PostButtonBox, LogoContainer } from "./style";
 import { CowDogHomeIcon } from "../CowDogHomeIcon";
 import { Button } from "../../../../../components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { PostPageContext } from "../../../contexts/PostPageContext";
 
 export const Headers = ({}) => {
-  const navigate = useNavigate();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { onSubmitHandler, postData } = useContext(PostPageContext);
   const isFilled = postData?.content && postData?.imgUrl;
+  // ⬇️ 윈도우 사이즈 변경 감지
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
     };
-
     window.addEventListener("resize", handleWindowResize);
-
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
-
+  // ⬇️ 올리기 버튼 클릭
   const handleHousePost = (e) => {
     onSubmitHandler(e);
   };
@@ -51,7 +48,7 @@ export const Headers = ({}) => {
           </LogoContainer>
 
           <ButtonBox>
-            <PostButtonBox width="8rem" onClick={handleHousePost}>
+            <PostButtonBox width="12rem" onClick={handleHousePost}>
               <Button
                 theme={isFilled ? "filled" : "gray"}
                 size="large"
