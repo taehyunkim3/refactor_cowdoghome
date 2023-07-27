@@ -25,7 +25,7 @@ export const InputFile = ({}) => {
   // ⬇️ 이미지 압축 옵션
   const options = {
     maxSizeMB: 0.8,
-    maxWidthOrHeight: 1700,
+    maxWidthOrHeight: 1020,
     useWebWorker: true,
   };
   // ⬇️ 이미지 압축
