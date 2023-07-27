@@ -4,7 +4,8 @@ export const ItemDetailBubbleLayout = styled.div`
 position: absolute;
 inset: auto auto 0px 0px;
 transform: translate( ${(prop) => (prop.xPosition)},  ${(prop) => (prop.yPosition)});
-
+opacity: ${(prop) => (prop.opacity ? 1 : 0)};
+transition: opacity .2s ease-in-out;
 width: 320px;
 box-sizing: border-box;
 padding: 10px 0px 10px 10px;

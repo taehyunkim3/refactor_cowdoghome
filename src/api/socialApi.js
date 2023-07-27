@@ -8,7 +8,7 @@ export const kakaoLoginApi = async (code, REST_API_KEY, REDIRECT_URI) => {
     grant_type: "authorization_code",
     client_id: REST_API_KEY,
     redirect_uri: REDIRECT_URI,
-    response_type: code,
+    code: code,
   });
 
   const config = {
@@ -17,12 +17,22 @@ export const kakaoLoginApi = async (code, REST_API_KEY, REDIRECT_URI) => {
     },
   };
 
-  const response = await axios.post(
-    "https://kauth.kakao.com/oauth/token",
-    requestBody,
-    config
-  );
-  return response.data;
+  try {
+    const response = await axios.post(
+      "https://kauth.kakao.com/oauth/token",
+      requestBody,
+      config
+    );
+    // console.log("Server response: ", response.data);
+
+    // return response.data;
+  } catch (error) {
+    console.error(`Error in kakaoLoginApi: ${error}`);
+    alert("카카오 로그인에 실패했습니다." + error);
+    if (error.response) {
+      console.error(`Error details: ${error.response.data}`);
+    }
+  }
 };
 
 export const refreshToken = async (refreshToken, REST_API_KEY) => {
@@ -45,6 +55,7 @@ export const refreshToken = async (refreshToken, REST_API_KEY) => {
       requestBody,
       config
     );
+    console.log("refreshToken response: ", response);
     return response.data;
   } catch (error) {
     console.error(`Error in refreshToken: ${error}`);

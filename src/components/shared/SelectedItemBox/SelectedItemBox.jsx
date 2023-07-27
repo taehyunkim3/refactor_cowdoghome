@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   SelectedItemBottom,
   SelectedItemBoxLayer,
@@ -25,6 +26,21 @@ export const SelectedItemBox = ({
   onClickCounter = () => {},
   onClickDelete = () => {},
 }) => {
+  const [count, setCount] = useState(counter);
+
+  const handleClickPlus = () => {
+    setCount((prev) => prev + 1);
+    onClickPlus();
+  };
+
+  const handleClickMinus = () => {
+    onClickMinus();
+    setCount((prev) => {
+      if (prev === 1) return prev;
+      return prev - 1;
+    });
+  };
+
   return (
     <SelectedItemBoxLayer>
       <h2>{itemtext}</h2>
@@ -33,11 +49,11 @@ export const SelectedItemBox = ({
       </SelectedItemDelete>
       <SelectedItemBottom>
         <SelectedItemCounter>
-          <HiMinusSmall className="button" onClick={onClickMinus} />
-          <button onClick={onClickCounter}>{counter}</button>
-          <HiPlusSmall className="button" onClick={onClickPlus} />
+          <HiMinusSmall className="button" onClick={handleClickMinus} />
+          <button onClick={onClickCounter}>{count}</button>
+          <HiPlusSmall className="button" onClick={handleClickPlus} />
         </SelectedItemCounter>
-        <span>{price}원</span>
+        <span>{(Number(price) * count).toLocaleString()}원</span>
       </SelectedItemBottom>
     </SelectedItemBoxLayer>
   );

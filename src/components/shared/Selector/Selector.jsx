@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   IconStyle,
   SelectorStyle,
@@ -6,16 +6,43 @@ import {
   SpanStyle,
 } from "./SelectorStyle";
 
-export const Selector = ({ title, options, focus = false }) => {
+export const Selector = ({
+  title,
+  options,
+  focus = false,
+  onClick,
+  storeValue,
+  isSelectFinished,
+  storeAdditionalPrices,
+}) => {
   const [selected, setSelected] = useState(null);
 
+  const selectRef = useRef(null);
+
   const handleSelect = (event) => {
+    storeValue(options[event.target.value]);
     setSelected(event.target.value);
+    storeAdditionalPrices && storeAdditionalPrices(+event.target.value);
   };
+
+  const handleClick = (event) => {
+    onClick(event.target.value);
+  };
+
+  useEffect(() => {
+    if (isSelectFinished) {
+      selectRef.current.value = "";
+    }
+  }, [isSelectFinished]);
 
   return (
     <SelectorWrapper>
-      <SelectorStyle value={selected} onChange={handleSelect} focus={focus}>
+      <SelectorStyle
+        onClick={handleClick}
+        onChange={handleSelect}
+        focus={focus}
+        ref={selectRef}
+      >
         <option value="">{title}</option>
         {options.map((e, i) => {
           return (

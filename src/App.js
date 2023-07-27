@@ -1,8 +1,10 @@
-import { Provider } from "react-redux";
+import { ThemeProvider } from "styled-components";
 import "./reset.css";
-import { Router } from "./routes/Router";
-import { GlobalStyle } from "./style/GlobalStyle";
+import { Router } from "./routes";
+import { GlobalStyle, theme } from "./style";
+import { Provider } from "react-redux";
 import { store } from "./redux";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
@@ -12,9 +14,11 @@ export const App = () => {
     <>
       <QueryClientProvider client={queryClient}>
         <GlobalStyle />
-        <Provider store={store}>
-          <Router />
-        </Provider>
+        <ThemeProvider theme={theme}>
+          <Provider store={store}>
+            <Router />
+          </Provider>
+        </ThemeProvider>
       </QueryClientProvider>
     </>
   );

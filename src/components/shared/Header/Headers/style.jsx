@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 
 export const HeaderBox = styled.div`
-  width: 100%;
+  // width: 100%; //레이아웃 때문이 잠깐 주석처리 해놓았습니다 . 김태현
   height: calc(5em - 0.063em); // 기본 web
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  justify-content: space-around;
   text-align: center;
   padding: 0 3.75em;
   box-sizing: content-box;
@@ -16,6 +16,8 @@ export const HeaderBox = styled.div`
   @media (max-width: 768px) {
     height: calc(3.125em - 0.063em); // mobile
     padding: 0.1em;
+    display: flex;
+    justify-content: space-around;
   }
 `;
 
@@ -23,14 +25,21 @@ export const LogoContainer = styled.div`
   position: absolute;
   left: 3.75em;
   z-index: 9999;
+  grid-column: 1;
   @media (max-width: 768px) {
     position: static;
   }
 `;
 
+export const SearchBox = styled.div`
+  display: inline-flex;
+  grid-column: 2;
+`;
+
 export const ButtonBox = styled.div`
   display: flex;
   align-items: center;
+  grid-column: 3;
 `;
 
 export const SignBox = styled.div`
