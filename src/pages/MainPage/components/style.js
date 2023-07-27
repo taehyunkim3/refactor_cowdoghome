@@ -24,9 +24,11 @@ export const MainImage = styled.img`
 `;
 
 export const ProfileImage = styled.img`
-  width: 40px;
+  width: 50px;
   border-radius: 999px;
   transition: transform 0.2s ease-in-out;
+  aspect-ratio: 1;
+  margin-left: 4px;
 
   &:hover {
     opacity: 0.6;
