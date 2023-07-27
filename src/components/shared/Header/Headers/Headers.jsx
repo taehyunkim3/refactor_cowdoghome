@@ -19,36 +19,9 @@ import axios from "axios";
 export const Headers = ({}) => {
   const navigate = useNavigate();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const checkLoginStatus = async () => {
-      const token = window.localStorage.getItem("token");
-
-      if (!token) {
-        setLoggedIn(false);
-        return;
-      }
-      try {
-        const response = await axios.get(
-          "https://cowdoghome.store/api/userinfo",
-          {
-            headers: { Cowdog: `Bearer ${token}` },
-          }
-        );
-
-        if (response.data.user) {
-          setLoggedIn(true);
-        } else {
-          setLoggedIn(false);
-        }
-      } catch (error) {
-        console.error("Login check failed", error);
-        setLoggedIn(false);
-      }
-    };
-    checkLoginStatus();
-  }, []);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -57,27 +30,30 @@ export const Headers = ({}) => {
 
     window.addEventListener("resize", handleWindowResize);
 
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
 
   const handleLogout = async () => {
-    const token = window.localStorage.getItem("token");
-
     try {
       const response = await axios.get("https://cowdoghome.store/api/logout", {
         headers: { Cowdog: `Bearer ${token}` },
       });
 
       if (response.data.message === "로그아웃에 성공하였습니다.") {
-        window.localStorage.removeItem("token");
-        setLoggedIn(false);
+        console.log("로그아웃 성공");
       } else {
         console.error("Logout failed");
       }
     } catch (error) {
-      console.error(error);
+      console.error(error.response);
     }
   };
 
