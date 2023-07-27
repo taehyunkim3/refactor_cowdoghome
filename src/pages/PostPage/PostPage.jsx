@@ -19,22 +19,23 @@ export const PostPage = ({}) => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log("👦🏾" + JSON.stringify(itemData));
-    const formedItemData = Object.values(itemData)
-      .filter((item) => item.itemId != null)
-      .map((item) => ({
-        itemId: item.itemId,
-        x: item.percentX,
-        y: item.percentY,
-      }));
-    if (formedItemData.length === 0) {
+    console.log("👦🏾" + JSON.stringify(postData));
+    // const formedItemData = Object.values(itemData)
+    //   .filter((item) => item.itemId != null)
+    //   .map((item) => ({
+    //     itemId: item.itemId,
+    //     x: item.percentX,
+    //     y: item.percentY,
+    //   }));
+    if (postData.itemData.length === 0) {
       alert("아이템을 등록해주세요.");
       return;
     }
 
     const payload = {
       ...postData,
-      itemData: formedItemData,
+      // ...postData,
+      // itemData: formedItemData,
     };
     try {
       const response = await postHousePost(payload);

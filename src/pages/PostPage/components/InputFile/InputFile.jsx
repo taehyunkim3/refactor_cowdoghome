@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 import imageCompression from "browser-image-compression";
 
 import { TextBox } from "./style";
-import { useComponentSize } from "../../hooks";
 import { MdPhotoCamera } from "react-icons/md";
 import { DraggableButtonInCard } from "../DraggableButtonInCard";
 import { PostPageContext } from "../../contexts/PostPageContext";
@@ -74,7 +73,6 @@ const initialInput = {
 export const InputFile = ({}) => {
   const { setPostData, postData } = useContext(PostPageContext);
 
-  const [itemTags, setItemTags] = useState([]);
   const fileUpload = useRef();
   const [fileUrl, setFileUrl] = useState(null);
   const [input, setInput] = useState(initialInput);
@@ -84,23 +82,19 @@ export const InputFile = ({}) => {
     maxWidthOrHeight: 1700,
     useWebWorker: true,
   };
-  const [componentRef, size] = useComponentSize(fileUrl);
+
   const onChangeImage = async (e) => {
     const imageFile = e.target.files[0];
 
     try {
       const compressedFile = await imageCompression(imageFile, options);
       const imgUrl = URL.createObjectURL(compressedFile);
-
       setFileUrl(imgUrl);
       setPostData({ ...input, imgUrl: compressedFile });
     } catch (error) {
       console.error(error);
     }
   };
-  useEffect(() => {
-    return () => {};
-  }, [setItemTags]);
 
   const onChangeValue = (e) => {
     const { name, value } = e.target;

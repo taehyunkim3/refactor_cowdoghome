@@ -10,30 +10,15 @@ export const ImageTagModal = ({
   selectedItem,
   setSelectedItem,
 }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [results, setResults] = useState([]);
-
-  useEffect(() => {
-    if (searchTerm && !selectedItem) {
-      axios
-        .get(`https://reqres.in/api/unknown`)
-        .then((res) => {
-          const filteredData = res.data.data.filter((item) =>
-            item.name.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-          setResults(filteredData);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
-  }, []);
   const { data, isLoading, isError, error } = useQuery(["item"], () =>
     getItems()
   );
-  console.log(data);
 
   const handleSelect = (item) => {
+    console.log(
+      "TAGMODALHANDLESELECT🐹" + item.itemId + item.brandName + item.itemName
+    );
+    console.log("TAGMODALHANDLESELECTselecteditemBefore🐹🐹" + selectedItem);
     setSelectedItem({
       itemId: item.itemId,
       brandName: item.brandName,
@@ -42,7 +27,7 @@ export const ImageTagModal = ({
         ? JSON.parse(item["ItemImgLists.itemImg"])
         : null,
     });
-    console.log("🐹" + item.brandName);
+    console.log("TAGMODALHANDLESELECTselecteditemAfter🐹🐹🐹" + selectedItem);
     closeModal();
   };
 
@@ -74,7 +59,7 @@ export const ImageTagModal = ({
           <h4>선택된 상품:</h4>
           <ListItemBubble
             onClickFunction={() => handleSelect(selectedItem)}
-            imageUrl={selectedItem.ItemImgLists}
+            imageUrl={selectedItem["ItemImgLists.itemImg"]}
             brand={selectedItem.brandName}
             name={selectedItem.itemName}
             noButton={true}

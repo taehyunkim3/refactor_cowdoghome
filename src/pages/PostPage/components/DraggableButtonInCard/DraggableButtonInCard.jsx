@@ -8,25 +8,37 @@ import { useComponentSize } from "../../hooks";
 import { styled } from "styled-components";
 import { CircleButton } from "../../../../components";
 export const DraggableButtonInCard = ({ fileUrl }) => {
-  const { itemData, setitemData } = useContext(PostPageContext);
   const [isEditing, setIsEditing] = useState(false);
   const addButtonRef = useRef(null);
+  const { setPostData, postData } = useContext(PostPageContext);
   const initialState = {};
+
   const [tagData, setTagData] = useState(initialState);
   const [componentRef, size] = useComponentSize(fileUrl);
 
   const addNewButton = (e) => {
-    if (!isEditing || Object.values(tagData).some((tag) => tag.modalVisible))
-      return;
-    if (Object.keys(tagData).length >= 5)
+    // 모든 모달이 닫혀있는지 확인
+    const allModalsClosed = Object.values(tagData).every(
+      (tag) => !tag.modalVisible
+    );
+    // 모든 태그가 선택된 아이템을 가지고 있는지 확인
+    const allTagsHaveSelectedItem = Object.values(tagData).every(
+      (tag) => tag.selectedItems !== null
+    );
+    if (!isEditing || !allModalsClosed || !allTagsHaveSelectedItem) return;
+
+    if (Object.keys(tagData).length >= 5) {
       return alert("태그는 최대 5개까지 추가할 수 있습니다.");
+    }
+
     const divRect = componentRef.current.getBoundingClientRect();
     const x = e.clientX - divRect.x;
     const y = e.clientY - divRect.y;
 
     setTagData((prevData) => {
+      console.log("SETTAGDATA🌈" + JSON.stringify(prevData));
       const newTagId = Object.keys(prevData).length;
-      return {
+      const updatedData = {
         ...prevData,
         [newTagId]: {
           axisX: x,
@@ -38,8 +50,10 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
           itemId: null,
         },
       };
+      console.log("🌈🌈🌈" + JSON.stringify(updatedData));
+
+      return updatedData;
     });
-    setitemData(tagData);
   };
 
   const toggleModal = (tagId) => {
@@ -53,34 +67,61 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
   };
 
   const handleSelect = (tagId, item) => {
+    console.log("HANDLESELECT🔥" + JSON.stringify(tagData));
+
+    const selectedItem = {
+      itemId: item.itemId,
+      brandName: item.brandName,
+      itemName: item.itemName,
+      ItemImgLists: item["ItemImgLists.itemImg"]
+        ? JSON.parse(item["ItemImgLists.itemImg"])
+        : null,
+    };
+
     setTagData((prevData) => ({
       ...prevData,
       [tagId]: {
         ...prevData[tagId],
-        selectedItems: item,
+        selectedItems: selectedItem,
         itemId: item.itemId,
       },
     }));
+
     toggleModal(tagId);
+    console.log("🔥🔥🔥" + JSON.stringify(tagData));
   };
   //
-  useEffect(() => {
-    setitemData(tagData);
-  }, [tagData]);
+
   //
   const handleDrag = (tagId, e, data) => {
-    setTagData((prevData) => ({
-      ...prevData,
-      [tagId]: {
-        ...prevData[tagId],
-        axisX: data.x,
-        axisY: data.y,
-        percentX: Number(((Number(data.x) / size.width) * 100).toFixed(2)),
-        percentY: Number(((Number(data.y) / size.height) * 100).toFixed(2)),
-      },
-    }));
-    setitemData(tagData);
+    console.log("HANDLEDRAG💧" + JSON.stringify(tagData));
+    setTagData((prevData) => {
+      const updatedData = {
+        ...prevData,
+        [tagId]: {
+          ...prevData[tagId],
+          axisX: data.x,
+          axisY: data.y,
+          percentX: Number(((Number(data.x) / size.width) * 100).toFixed(2)),
+          percentY: Number(((Number(data.y) / size.height) * 100).toFixed(2)),
+        },
+      };
+      // setitemData(updatedData);
+      return updatedData;
+    });
+    console.log("💧💧💧" + JSON.stringify(tagData));
   };
+  useEffect(() => {
+    const filteredTagData = Object.values(tagData).filter(
+      (tag) => tag.selectedItems !== null
+    );
+    const formedItemData = filteredTagData.map((tag) => ({
+      itemId: tag.itemId,
+      x: tag.percentX,
+      y: tag.percentY,
+    }));
+    setPostData({ ...postData, itemData: formedItemData });
+  }, [tagData]);
 
   return (
     <>
@@ -124,7 +165,7 @@ export const DraggableButtonInCard = ({ fileUrl }) => {
                 {tagData[tagId].modalVisible && (
                   <ImageTagModal
                     closeModal={() => toggleModal(tagId)}
-                    selectedItem={tagData[tagId].selectedItem}
+                    selectedItem={tagData[tagId].selectedItems} // 수정됨
                     setSelectedItem={(item) => handleSelect(tagId, item)}
                   />
                 )}
@@ -157,19 +198,19 @@ const StDragContainer = styled.div`
   color: black;
 
   border-radius: 5px;
-  padding: 1em;
+  // padding: 1em;
   margin: auto;
   user-select: none;
   background: #ffffff;
   flex: 1 1 auto;
-  padding: 10px 0px;
+  padding: 0px;
   //   overflow: auto;
   border-radius: 4px;
   border: 1px solid #e0e0e0;
   z-index: 1;
 `;
 const StDragImage = styled.img`
-  position: absolute;
+  // position: absolute;
   top: 0;
   left: 0;
   width: 100%;

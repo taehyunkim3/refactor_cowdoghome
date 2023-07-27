@@ -38,8 +38,8 @@ export const ListItemBubble = ({
       <ScrollPage>
         {" "}
         <ItemDetailBubbleLayout
-          xPosition={x}
-          yPosition={y}
+          // xPosition={x}
+          // yPosition={y}
           onClick={onClickFunction}
         >
           <StItemBubbleImage>
