@@ -8,7 +8,7 @@ export const getItems = async () => { // 버블에서 목록 조회
         console.log(data);
         return data;
     } catch (e) {
-        alert(e.response.data.msg);
+        alert(e.response.data.errorMessage);
     }
 }
 
@@ -17,7 +17,7 @@ export const getHouseDetail = async (id) => { // 상세페이지 조회
         const { data } = await axios.get(`${baseUrl}/detail/${id}`);
         return data;
     } catch (e) {
-        throw new Error(e.response.data.msg);
+        throw new Error(e.response.data.errorMessage);
     }
 }
 
@@ -48,6 +48,6 @@ export const postHousePost = async (post) => { // 사진전송 및 게시
         const { data } = await axios.post(`${baseUrl}/detail`, dataWithUrl, formedToken);
         return data;
     } catch (e) {
-        alert(e.response.data.msg);
+        alert(e.response.data.errorMessage);
     }
 }
