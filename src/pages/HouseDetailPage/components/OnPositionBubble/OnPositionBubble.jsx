@@ -12,6 +12,9 @@ export const OnPositionBubble = ({
   imageUrl,
   icon = "plus",
   type = "small",
+  isHovered,
+  setIsHovered,
+  setHoveredItemId,
   onClickFunction = () => {},
 }) => {
   let bubbleX = "5%";
@@ -26,14 +29,24 @@ export const OnPositionBubble = ({
   } else if (parseInt(left) >= 50) {
     bubbleX = "-100%";
   }
+
   const navigate = useNavigate();
   return (
     <div
       style={{ position: "absolute", top: top, left: left }}
       onClick={onClickFunction}
+      onMouseOut={() => setHoveredItemId(null)}
     >
-      <CircleButton icon={icon} type={type} />
+      <CircleButton
+        icon={icon}
+        type={type}
+        // setIsHovered={setHoveredItemId(itemId)} // 무한루프 생성
+        setIsHovered={() => setHoveredItemId(itemId)}
+        // onMouseOver={() => setHoveredItemId(itemId)}
+      />
+      {/* {isHovered && ( */}
       <ItemDetailBubble
+        // style={{ opacity: isHovered ? 1 : 0, transition: "all 0.5s" }}
         x={bubbleX}
         y={bubbleY}
         name={name}
@@ -43,7 +56,9 @@ export const OnPositionBubble = ({
         onClick={() => {
           navigate(`/item/${itemId}`);
         }}
+        opacity={isHovered ? 1 : 0}
       />
+      {/* )} */}
     </div>
   );
 };

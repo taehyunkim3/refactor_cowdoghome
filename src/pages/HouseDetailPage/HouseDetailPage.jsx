@@ -1,38 +1,41 @@
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  Button,
-  CircleButton,
-  Footer,
-  Header,
-  ItemDetailBubble,
-  ItemImage,
-} from "../../components";
+import { Footer, Header, ItemImage, TopBanner } from "../../components";
 import { OnPositionBubble, UserProfileContainer } from "./components";
-import { HrWithCounter } from "./components/HrWithCounter/HrWithCounter"; //이거는 무슨의미인지 모르겠음
+import { HrWithCounter } from "./components/HrWithCounter/HrWithCounter";
 import {
   CommonLayout,
-  HouseDetailPageLayout,
   MainImage,
   MainImageContainer,
   MainLayout,
   MainLayoutInner,
   RelatedItems,
-  OnPosition,
   ContentText,
 } from "./style";
 import ReactMarkdown from "react-markdown";
 import { useQuery } from "@tanstack/react-query";
-import { getDeskDetail } from "../../api/houseApi";
+import { getHouseDetail } from "../../api/houseApi";
+import { useEffect, useState } from "react";
 
 export const HouseDetailPage = ({}) => {
   const navigate = useNavigate();
+
   const { houseId } = useParams();
   const { data, isLoading, isError, error } = useQuery(
     ["detail", houseId],
-    () => getDeskDetail(houseId)
+    () => getHouseDetail(houseId)
   );
   console.log(data);
-
+  const [hoveredItemId, setHoveredItemId] = useState(null);
+  const [imgHeight, setImgHeight] = useState(0);
+  useEffect(() => {
+    const img = new Image();
+    img.src = data && data.details.imgUrl;
+    img.onload = () => {
+      const heightRatio = (img.height / img.width) * 100;
+      console.log("Height ratio:", heightRatio);
+      setImgHeight(heightRatio);
+    };
+  }, [data]);
   if (houseId === "undefined") {
     return <div>undefined는 존재하지 않는 제품입니다👀</div>;
   }
@@ -55,14 +58,14 @@ export const HouseDetailPage = ({}) => {
     <>
       {" "}
       <CommonLayout>
+        <TopBanner />
         <Header />
         {/* <HouseDetailPageLayout> */}
         <MainLayout>
           <MainLayoutInner>
             <MainImageContainer>
-              <MainImage>
+              <MainImage imgHeight={imgHeight}>
                 <img src={data.details.imgUrl}></img>
-
                 {data.itemData.map((item) => (
                   <OnPositionBubble
                     top={`${item["WritePacks.coordinateY"]}%`}
@@ -72,9 +75,11 @@ export const HouseDetailPage = ({}) => {
                     price={item.price}
                     imageUrl={JSON.parse(item["ItemImgLists.itemImg"])}
                     itemId={item.itemId}
+                    isHovered={hoveredItemId === item.itemId}
                     onClickFunction={() => {
                       navigate(`/item/${item.itemId}`);
                     }}
+                    setHoveredItemId={setHoveredItemId}
                   />
                 ))}
               </MainImage>
@@ -85,6 +90,8 @@ export const HouseDetailPage = ({}) => {
                       <ItemImage
                         type="HouseItem"
                         imgUrl={JSON.parse(item["ItemImgLists.itemImg"])}
+                        onMouseOver={() => setHoveredItemId(item.itemId)}
+                        onMouseOut={() => setHoveredItemId(null)}
                         onClickFunction={() => {
                           navigate(`/item/${item.itemId}`);
                         }}

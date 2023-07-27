@@ -14,7 +14,9 @@ export const useComponentSize = (fileUrl) => {
       setSize({ width, height });
     };
 
-    handleResize();
+    const image = new Image();
+    image.src = fileUrl;
+    image.onload = handleResize; // 이미지가 로드된 후에 크기를 계산 - 이것때문에 문제가 일어난것은 아니었으나, 일단 유지함.
 
     window.addEventListener("resize", handleResize);
 
@@ -22,6 +24,5 @@ export const useComponentSize = (fileUrl) => {
   }, [fileUrl]);
   console.log(size);
   console.log(componentRef);
-
   return [componentRef, size];
 };

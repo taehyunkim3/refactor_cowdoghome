@@ -76,28 +76,9 @@ color: rgb(47, 52, 56);
 
 
 `;
-
-
-export const InputFileLayout = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  label {
-    padding: 10px 20px;
-    color: #fff;
-    vertical-align: middle;
-    background-color: #999999;
-    cursor: pointer;
-    height: 40px;
-    margin-left: 10px;
-  }
-
-  input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-  }
+export const ScrollPage = styled.div`
+  flex: 1 1 auto;
+  padding: 3px 0px;
+  overflow: auto;
 `;
+

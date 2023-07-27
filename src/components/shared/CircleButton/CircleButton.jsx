@@ -27,6 +27,7 @@ export const CircleButton = ({
   border = "none",
   icon = "ArrowRight",
   type = "none",
+  setIsHovered = () => {},
 }) => {
   let Icon;
   switch (icon.toUpperCase()) {
@@ -94,6 +95,7 @@ export const CircleButton = ({
         bgColor={bgColor}
         shadow={isShadow}
         border={border}
+        onMouseOver={setIsHovered}
       >
         <Icon />
       </CircleButtonLayer>

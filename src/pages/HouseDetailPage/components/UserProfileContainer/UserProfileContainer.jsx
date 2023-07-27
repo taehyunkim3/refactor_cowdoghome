@@ -48,13 +48,13 @@ export const UserProfileContainer = ({
           <Button theme="filled" size="small" label="팔로우" />
         </div>
       </UserProfileLayout>{" "}
-      <UserProfile>
+      {/* <UserProfile>
         <ItemImage size="174px" roundSize="5px" isHover={true} />
         <ItemImage size="174px" roundSize="5px" isHover={true} />
         <ItemImage size="174px" roundSize="5px" isHover={true} />
         <ItemImage size="174px" roundSize="5px" isHover={true} />
-      </UserProfile>
-      <div style={{ margin: "20px 0px" }} />
+      </UserProfile> */}
+      <div style={{ margin: "40px 0px" }} />
       <Hr />
       <div style={{ margin: "20px 0px" }} />
     </>

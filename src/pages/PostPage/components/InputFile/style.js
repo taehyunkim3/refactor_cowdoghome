@@ -1,83 +1,5 @@
 import { styled } from "styled-components";
 
-export const ItemDetailBubbleLayout = styled.div`
-position: absolute;
-inset: auto auto 0px 0px;
-transform: translate( ${(prop) => (prop.xPosition)},  ${(prop) => (prop.yPosition)});
-
-width: 320px;
-
-box-sizing: border-box;
-padding: 10px 0px 10px 10px;
-border-radius: 4px;
-display: flex;
-background: rgb(255, 255, 255);
-color: rgb(47, 52, 56);
-cursor: pointer;
-position: relative;
-z-index: 1;
-
-border: 1px solid #E0E0E0;
-`;
-
-export const StItemBubbleImage = styled.div`
-
-width: 84px;
-    height: 84px;
-    position: relative;
-    margin-right: 10px;
-    flex: 0 0 auto;
-    overflow: hidden;
-
-img{
-    border: 0;
-    width: 100%;
-    position: absolute;
-}
-
-`;
-
-export const StItemBubbleText = styled.div`
-
-flex: 1 1 auto;
-overflow: hidden;
-.brand {
-    display: block;
-    font-size: 12px;
-    line-height: 16px;
-    color: rgb(130, 140, 148);
-}
-.name {
-    width: 100%;
-    font-size: 14px;
-    line-height: 18px;
-    height: 36px;
-    margin: 4px 0px;
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    overflow-wrap: break-word;
-}
-.price{
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 700;
-}
-`;
-
-export const StItemBubbleArrow = styled.div`
-width: 40px;
-display: flex;
-
-align-items: center;
-
-justify-content: center;
-flex: 0 0 auto;
-font-size: 24px;    
-color: rgb(47, 52, 56);
-
-
-`;
 export const TextBox = styled.form`
 margin-left:10px;
 width:480px;
@@ -106,4 +28,66 @@ textarea::placeholder{
     color: rgb(194, 200, 204);
     font-size: 14px;
 }
-    `;
+`;
+
+
+export const InputFileLayout = styled.div`
+text-align: center;
+label {
+  padding: 10px 20px;
+  color: #fff;
+  vertical-align: middle;
+  background-color: #999999;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 10px;
+}
+
+input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+.pcload {
+  margin: 0px;
+  border: none;
+  background: none rgb(53, 197, 240);
+  font-size: 14px;
+  line-height: 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  font-weight: 400;
+  box-sizing: border-box;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  border-radius: 4px;
+}
+.bigText {
+  margin: 0px 0px 4px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  color: rgb(130, 140, 148);
+}
+.smallText {
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  color: rgb(130, 140, 148);
+}
+`;
+
+export const Camera = styled.div`
+display: inline-block;
+font-size: 24px;
+line-height: 1;
+margin: 0px 0px 12px;
+color: rgb(130, 140, 148);
+margin: 0px 0px 14.5px;
+`;

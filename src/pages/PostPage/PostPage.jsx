@@ -4,9 +4,10 @@ import { InputFile, PostHeader } from "./components";
 import { useState } from "react";
 import { PostPageContext } from "./contexts/PostPageContext";
 import { postHousePost } from "../../api/houseApi"; // 이 부분은 실제 API 함수 파일 위치로 변경
+import { useNavigate } from "react-router-dom";
 
 export const PostPage = ({}) => {
-  const [fileData, setFileData] = useState(null); //삭제예정
+  const navigate = useNavigate();
   const [itemData, setitemData] = useState({
     tagsId: [],
     percentX: [],
@@ -15,23 +16,32 @@ export const PostPage = ({}) => {
   const [postData, setPostData] = useState({
     content: "",
   });
-  const [contentData, setContentData] = useState(null); //삭제예정
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    const formedItemData = itemData.tagsId.map((id, index) => ({
-      itemId: id,
-      x: itemData.percentX[index],
-      y: itemData.percentY[index],
-    }));
+    console.log("👦🏾" + JSON.stringify(postData));
+    // const formedItemData = Object.values(itemData)
+    //   .filter((item) => item.itemId != null)
+    //   .map((item) => ({
+    //     itemId: item.itemId,
+    //     x: item.percentX,
+    //     y: item.percentY,
+    //   }));
+    if (postData.itemData.length === 0) {
+      alert("아이템을 등록해주세요.");
+      return;
+    }
 
     const payload = {
       ...postData,
-      itemData: formedItemData,
+      // ...postData,
+      // itemData: formedItemData,
     };
     try {
       const response = await postHousePost(payload);
-      console.log("👁️" + response);
+      console.log("👁️" + JSON.stringify(response));
+      alert("성공적으로 등록되었습니다.");
+      navigate(`/house/${response.details.detailsId}`);
     } catch (error) {
       console.error("😀" + error);
     }

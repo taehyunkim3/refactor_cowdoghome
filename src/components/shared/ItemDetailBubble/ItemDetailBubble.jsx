@@ -22,6 +22,7 @@ export const ItemDetailBubble = ({
   brand = "브랜드",
   name = "이름이름이름이름이름이름이름이름이름이름",
   onClickFunction = () => {},
+  opacity = 1,
 }) => {
   return (
     <>
@@ -29,6 +30,7 @@ export const ItemDetailBubble = ({
         xPosition={x}
         yPosition={y}
         onClick={onClickFunction}
+        opacity={opacity}
       >
         <StItemBubbleImage>
           <img src={imageUrl} alt="itemImage" />

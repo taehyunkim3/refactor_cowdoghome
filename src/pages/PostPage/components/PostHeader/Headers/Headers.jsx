@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { LiaSearchSolid } from "react-icons/lia";
 import { ButtonBox, HeaderBox, PostButtonBox, LogoContainer } from "./style";
 import { CowDogHomeIcon } from "../CowDogHomeIcon";
-// import { InputContainer } from "../../../../../components/shared/InputContainer";
 import { Button } from "../../../../../components";
 import { Link, useNavigate } from "react-router-dom";
 import { PostPageContext } from "../../../contexts/PostPageContext";
@@ -11,7 +10,7 @@ export const Headers = ({}) => {
   const navigate = useNavigate();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { onSubmitHandler, postData } = useContext(PostPageContext);
-  const isFilled = postData?.content && postData?.imageUrl;
+  const isFilled = postData?.content && postData?.imgUrl;
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
