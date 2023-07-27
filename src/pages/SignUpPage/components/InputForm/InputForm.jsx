@@ -8,6 +8,7 @@ export const InputForm = ({
   placeholder = "",
   onChange,
   isPasswordConfirm = false, // Confirming password
+  generalError = "",
 }) => {
   const [input, setInput] = useState("");
   const [confirmInput, setConfirmInput] = useState(""); // Confirm password
@@ -16,30 +17,27 @@ export const InputForm = ({
   const handleChange = (e) => {
     setInput(e.target.value);
 
+    let errorMessage = "";
+
     if (isPasswordConfirm) {
       if (input !== e.target.value) {
-        setError("비밀번호가 일치하지 않습니다");
-      } else {
-        setError("");
+        errorMessage = "비밀번호가 일치하지 않습니다";
       }
     } else if (type === "password") {
       if (!/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}/.test(e.target.value)) {
-        setError("비밀번호는 영문, 숫자를 포함하여 8자 이상");
-      } else {
-        setError("");
+        errorMessage = "비밀번호는 영문, 숫자를 포함하여 8자 이상";
       }
     } else if (type === "nickname") {
       if (e.target.value.length < 2) {
-        setError("2자 이상 입력해주세요");
+        errorMessage = "2자 이상 입력해주세요";
       } else if (e.target.value.length > 15) {
-        setError("15자 이하 입력해주세요");
-      } else {
-        setError("");
+        errorMessage = "15자 이하 입력해주세요";
       }
     }
 
+    setError(errorMessage);
     if (onChange) {
-      onChange(e.target.value, error);
+      onChange(e.target.value, errorMessage);
     }
   };
 
@@ -93,7 +91,9 @@ export const InputForm = ({
           color: "rgb(255, 119, 119)",
         }}
       >
-        {error && <ErrorMsg>{error}</ErrorMsg>}
+        {(generalError || error) && (
+          <ErrorMsg>{generalError || error}</ErrorMsg>
+        )}
       </div>
     </div>
   );

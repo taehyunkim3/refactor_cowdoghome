@@ -102,21 +102,20 @@ export const SignUpPage = () => {
       console.log(response.data);
       return response.data;
     } catch (error) {
-      console.log("Error", error);
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.errorMessage
-      ) {
-        return { error: error.response.data.errorMessage };
-      }
+      console.error("Error", error);
       throw error;
     }
   };
-
   const handleRegister = async () => {
-    console.log("handleRegister is called"); // Add this line
-    if (!email || !domain || !password || !confirm || !nickname) {
+    console.log("handleRegister is called");
+    if (
+      !email ||
+      !domain ||
+      !password ||
+      !confirm ||
+      !nickname ||
+      error.nickname
+    ) {
       alert("모든 필드를 채우고 유효성 검사를 통과해야 합니다.");
       return;
     }
@@ -127,30 +126,28 @@ export const SignUpPage = () => {
       confirm,
     };
 
-    navigate("/login");
-
     console.log("Calling mutation with user data: ", user);
+
     try {
       const response = await registerUser(user);
-      if (response.error) {
-        setError((prev) => ({ ...prev, nickname: response.error }));
-        return;
-      }
-      console.log("User registration succeeded");
+      console.log("Registration succeeded, navigating to login page.");
       navigate("/login");
     } catch (error) {
-      console.log("Error during user registration", error.message);
-    }
-  };
-
-  const handleNicknameChange = (value) => {
-    setNickname(value);
-    if (value.length < 2) {
-      setError((prev) => ({ ...prev, nickname: "2자 이상 입력해주세요." }));
-    } else if (value.length > 15) {
-      setError((prev) => ({ ...prev, nickname: "15자 이하 입력해주세요." }));
-    } else {
-      setError((prev) => ({ ...prev, nickname: "" }));
+      console.error("Error in registration, not navigating.", error);
+      if (error.response && error.response.status === 409) {
+        // If status code is 409, show specific error message and don't navigate.
+        console.log("Registration conflict. User might already exist.");
+        setError((prev) => ({
+          ...prev,
+          general: error.response.data.errorMessage,
+        }));
+      } else {
+        // For other status codes, perform generic error handling.
+        setError((prev) => ({
+          ...prev,
+          general: error.message || error.toString(),
+        }));
+      }
     }
   };
 
@@ -215,7 +212,9 @@ export const SignUpPage = () => {
             placeholder="별명 (2~15자)"
             msg="다른 유저와 겹치지 않도록 입력해주세요. (2~15자)"
             name="nickname"
-            onChange={handleNicknameChange}
+            onChange={(value) => setNickname(value)}
+            error={error.nickname}
+            generalError={error.general}
           />
         </div>
 

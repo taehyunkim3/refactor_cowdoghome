@@ -14,7 +14,6 @@ import { CowDogHomeIcon } from "../CowDogHomeIcon";
 import { InputContainer } from "../../InputContainer/InputContainer";
 import { Button } from "../../Button";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 
 export const Headers = ({}) => {
   const navigate = useNavigate();
@@ -41,20 +40,8 @@ export const Headers = ({}) => {
     };
   }, []);
 
-  const handleLogout = async () => {
-    try {
-      const response = await axios.get("https://cowdoghome.store/api/logout", {
-        headers: { Cowdog: `Bearer ${token}` },
-      });
-
-      if (response.data.message === "로그아웃에 성공하였습니다.") {
-        console.log("로그아웃 성공");
-      } else {
-        console.error("Logout failed");
-      }
-    } catch (error) {
-      console.error(error.response);
-    }
+  const handleLogout =  () => {
+    window.alert("되겠냐??👿")
   };
 
   const handleLogin = () => {
