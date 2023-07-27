@@ -15,10 +15,10 @@ export const FooterBox = styled.div`
   display: block;
   box-sizing: border-box;
   background-color: #f7f9fa;
-  padding: 2.5vw 3.75vw;
+  padding: 1.3vw 3.75vw 2.5vw 3.75vw;
 
   @media (max-width: 768px) {
-    padding: 1.875vw 2vw;
+    padding: 1vw 1vw 1.85vw 2vw;
   }
 `;
 
@@ -32,8 +32,8 @@ export const FooterContent = styled.div`
 export const ContentBox = styled.div`
   color: rgb(47, 52, 56);
   display: block;
-  font-size: 1.2vw;
-  line-height: 1.6vw;
+  font-size: 14px;
+  line-height: 16px;
   font-family: "Jal_Onuel";
   width: 48%;
   margin-bottom: 1vw;
@@ -48,20 +48,22 @@ export const contentBoxStyle = {
 };
 
 export const Title = styled.span`
-  font-size: 1.8vw;
-  line-height: 2.4vw;
-  font-weight: 700;
+  margin-top: 1vw;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-bottom: 1.5vw;
   @media (max-width: 768px) {
     margin-bottom: 1.2vw;
   }
 `;
 
 export const Number = styled.span`
-  font-size: 1.6vw;
-  line-height: 2vw;
+  font-size: 16px;
+  line-height: 20px
   font-weight: 700;
   white-space: nowrap;
   margin-right: 0.6vw;
@@ -89,8 +91,8 @@ export const CompanyInfoBox = styled.div`
 `;
 
 export const CompanyInfoText = styled.span`
-  font-size: 1vw;
-  line-height: 1.6vw;
+  font-size: 12px;
+  line-height: 14px;
   color: rgb(130, 140, 148);
   font-family: "Jal_Onuel";
   overflow-x: hidden;
