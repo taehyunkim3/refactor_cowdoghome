@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import ProtectedRoute from "./ProtectedRoute";
-import { KakaoCallback } from "../pages/CallbackPage";
+
 import {
   LoginPage,
   ItemDetailPage,
@@ -8,6 +8,7 @@ import {
   SignUpPage,
   PostPage,
   HouseDetailPage,
+  KakaoCallback,
 } from "../pages";
 
 export const Router = () => {

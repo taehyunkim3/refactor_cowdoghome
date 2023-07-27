@@ -11,3 +11,10 @@ export const LoginButton = ({ children, ...props }) => (
     <BaseButton {...props}>{children}</BaseButton>
   </div>
 );
+
+export const ErrorMsg = styled.p`
+  padding-top: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgb(255, 119, 119);
+`;

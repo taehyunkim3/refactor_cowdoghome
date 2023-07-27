@@ -1,5 +1,5 @@
-import { Header, TopBanner } from "../../../components";
-import { Wrapper, Content, Footer } from "./style";
+import { Footer, Header, TopBanner } from "../../../components";
+import { Wrapper, Content } from "./style";
 
 export const MainPageLayout = ({ children }) => {
   return (
@@ -7,7 +7,7 @@ export const MainPageLayout = ({ children }) => {
       <TopBanner />
       <Header />
       <Content>{children}</Content>
-      <Footer>Footer</Footer>
+      <Footer />
     </Wrapper>
   );
 };

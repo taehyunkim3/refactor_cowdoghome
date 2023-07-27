@@ -12,7 +12,7 @@ export const CloseButtonIcon = ({}) => {
       <path
         fill="none"
         stroke="#ffffff"
-        stroke-width="2.5"
+        strokeWidth="2.5"
         d="M3,3 L21,21 M3,21 L21,3"
       ></path>
     </svg>
