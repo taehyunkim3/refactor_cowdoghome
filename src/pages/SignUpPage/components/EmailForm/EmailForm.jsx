@@ -32,6 +32,10 @@ export const EmailForm = ({ onEmailChange, onDomainChange, children }) => {
     }
   };
 
+  const handleEmailSubmit = () => {
+    window.alert("메일이 갈듯!말듯!😤");
+  };
+
   return (
     <>
       <Title>이메일</Title>
@@ -76,7 +80,13 @@ export const EmailForm = ({ onEmailChange, onDomainChange, children }) => {
       </InputContainer>
       {children}
       <div style={btnBoxStyle}>
-        <Button label="이메일 인증하기" theme="gray" size="large" b />
+        <Button
+          onClick={handleEmailSubmit}
+          label="이메일 인증하기"
+          theme="gray"
+          size="large"
+          b
+        />
       </div>
     </>
   );

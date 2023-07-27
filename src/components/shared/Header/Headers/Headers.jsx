@@ -41,7 +41,6 @@ export const Headers = ({}) => {
   }, []);
 
   const handleLogout = () => {
-    // postLogout(token);
     localStorage.removeItem("token");
     window.location.reload();
   };

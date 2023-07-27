@@ -151,6 +151,18 @@ export const SignUpPage = () => {
     }
   };
 
+  const handleFeaceBook = () => {
+    window.alert("주커버그 스레드 만들러감 ㅅㄱ");
+  };
+
+  const handleKakao = () => {
+    navigate("/login");
+  };
+
+  const handleNaver = () => {
+    window.alert("네이버보단 구글아님?🤪");
+  };
+
   return (
     <SignUpLayout>
       <ContentWrapper>
@@ -159,21 +171,14 @@ export const SignUpPage = () => {
           <SNSBox>
             <SNSTitle>SNS계정으로 간편하게 회원가입</SNSTitle>
             <SNSLists>
-              <SNSList>
-                {/* 연결될 link 추가해주시면 됩니다! */}
-                <Link to="">
-                  <CircleImage type="facebook" />
-                </Link>
+              <SNSList onClick={handleFeaceBook}>
+                <CircleImage type="facebook" />
               </SNSList>
-              <SNSList>
-                <Link to="">
-                  <CircleImage type="kakao" />
-                </Link>
+              <SNSList onClick={handleKakao}>
+                <CircleImage type="kakao" />
               </SNSList>
-              <SNSList>
-                <Link to="">
-                  <CircleImage type="naver" />
-                </Link>
+              <SNSList onClick={handleNaver}>
+                <CircleImage type="naver" />
               </SNSList>
             </SNSLists>
           </SNSBox>
