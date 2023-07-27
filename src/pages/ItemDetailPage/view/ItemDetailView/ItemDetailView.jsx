@@ -90,7 +90,7 @@ export const ItemDetailView = ({
           <ItemName>{itemName}</ItemName>
           <HeartContainer onClick={handleClickHeart}>
             {isHeartClicked ? (
-              <AiFillHeart shadow={false} size={"32px"} color="red" />
+              <AiFillHeart shadow={false} size={"32px"} color="#ff002b" />
             ) : (
               <AiOutlineHeart shadow={false} size={"32px"} color="gray" />
             )}
@@ -102,11 +102,13 @@ export const ItemDetailView = ({
       <Container>
         <RatingSection>
           <Stars>
-            {Array(+rating)
-              .fill(0)
-              .map((e, index) => {
-                return <span key={index}>★</span>;
-              })}
+            {rating === "0" ? (
+              <span>★</span>
+            ) : (
+              Array(+rating)
+                .fill(0)
+                .map((e, index) => <span key={index}>★</span>)
+            )}
           </Stars>
           <ReviewCount>{reviewCount}개 리뷰</ReviewCount>
         </RatingSection>
@@ -152,12 +154,12 @@ export const ItemDetailView = ({
       <BrandContainer>
         <BrandWrapper>
           <BrandIcon />
-          <Brand>이케아</Brand>
+          <Brand>{brandName}</Brand>
         </BrandWrapper>
         <div
           onClick={(e) => {
             e.preventDefault();
-            alert("구현 예정");
+            alert(`${brandName} 홈페이지는 구글에서 검색 부탁드립니다🙏`);
           }}
           style={{ width: "66px" }}
         >
@@ -253,11 +255,37 @@ export const ItemDetailView = ({
         <TotalPrice>{totalPrice.toLocaleString()}원</TotalPrice>
       </PriceContainer>
       <ButtonContainer>
-        <Button label="장바구니" theme="empty" size="large" b />
+        <Button
+          label="장바구니"
+          theme="empty"
+          size="large"
+          b
+          onClick={() => {
+            alert("당신의 지갑 사정을 다시 생각해보세요...💸");
+          }}
+        />
         {selectedProducts.length > 0 ? (
-          <Button label="바로구매" theme="filled" size="large" b />
+          <Button
+            label="바로구매"
+            theme="filled"
+            size="large"
+            b
+            onClick={() => {
+              alert(
+                "무통장 입금만 받습니다. 카카오뱅크 3333...임하루로...입금해주십시오 🔪"
+              );
+            }}
+          />
         ) : (
-          <Button label="바로구매" theme="gray" size="large" b />
+          <Button
+            label="바로구매"
+            theme="gray"
+            size="large"
+            b
+            onClick={() => {
+              alert("상품을 선택 후 구매 가능합니다 😇");
+            }}
+          />
         )}
       </ButtonContainer>
     </Wrapper>

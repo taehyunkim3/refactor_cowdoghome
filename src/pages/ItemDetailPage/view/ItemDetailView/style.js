@@ -151,7 +151,7 @@ export const BrandContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 8px;
+  padding-top: 18px;
   padding-bottom: 8px;
 `;
 
@@ -200,7 +200,7 @@ export const PriceContainer = styled.div`
 
 export const PriceText = styled.span`
   color: #2f3438;
-  font-weight: 400;
+  font-weight: 800;
   font-size: 14px;
 `;
 
