@@ -73,3 +73,28 @@ export const Input = styled.input`
     background-color: #fafafa;
   }
 `;
+
+export const Title = styled.b`
+  margin-bottom: 12px;
+  display: flex;
+  color: rgb(47, 52, 56);
+  font-size: 16px;
+`;
+
+export const InputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 40px;
+`;
+
+export const AtSign = styled.span`
+  color: #dbdbdb;
+  font-size: 15px;
+  margin: 2px;
+`;
+
+export const btnBoxStyle = {
+  marginTop: "20px",
+  marginBottom: "30px",
+  paddingTop: "2px",
+};

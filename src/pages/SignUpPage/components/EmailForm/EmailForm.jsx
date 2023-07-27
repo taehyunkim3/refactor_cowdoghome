@@ -5,6 +5,10 @@ import {
   SpanStyle,
   IconStyle,
   Input,
+  Title,
+  InputContainer,
+  AtSign,
+  btnBoxStyle,
 } from "./style";
 import { Button } from "../../../../components";
 
@@ -30,24 +34,8 @@ export const EmailForm = ({ onEmailChange, onDomainChange, children }) => {
 
   return (
     <>
-      <b
-        style={{
-          marginBottom: "12px",
-          display: "flex",
-          color: "rgb(47, 52, 56)",
-          fontSize: "16px",
-        }}
-      >
-        이메일
-      </b>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          height: "40px",
-        }}
-      >
-      
+      <Title>이메일</Title>
+      <InputContainer>
         <div style={{ flex: 1 }}>
           <Input
             type="text"
@@ -56,15 +44,11 @@ export const EmailForm = ({ onEmailChange, onDomainChange, children }) => {
             onBlur={handleEmailChange}
           />
         </div>
-
-        <span style={{ color: "#dbdbdb", fontSize: "15px", margin: "2px" }}>
-          @
-        </span>
+        <AtSign>@</AtSign>
         <SelectorWrapper>
           <SelectorStyle
             value={domain}
             onChange={(e) => {
-              console.log(e.target.value);
               setDomain(e.target.value);
             }}
             onBlur={handleDomainChange}
@@ -78,7 +62,7 @@ export const EmailForm = ({ onEmailChange, onDomainChange, children }) => {
             <option value="hotmail.com">hotmail.com</option>
             <option value="icloud.com">icloud.com</option>
           </SelectorStyle>
-          {children}
+
           <SpanStyle>
             <IconStyle
               width="10"
@@ -89,10 +73,9 @@ export const EmailForm = ({ onEmailChange, onDomainChange, children }) => {
             </IconStyle>
           </SpanStyle>
         </SelectorWrapper>
-      </div>
-      <div
-        style={{ marginTop: "20px", marginBottom: "30px", paddingTop: "2px" }}
-      >
+      </InputContainer>
+      {children}
+      <div style={btnBoxStyle}>
         <Button label="이메일 인증하기" theme="gray" size="large" b />
       </div>
     </>
