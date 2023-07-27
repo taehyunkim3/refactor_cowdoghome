@@ -1,5 +1,5 @@
 import { ItemImageView, ItemDetailView } from "../view";
-import { useItemDetailPageData } from "./hooks";
+import { useItemDetailPageData, useRandomNumber } from "./hooks";
 
 export const ItemDetailContainer = () => {
   const {
@@ -17,6 +17,8 @@ export const ItemDetailContainer = () => {
     isLoading,
   } = useItemDetailPageData();
 
+  const { heartCount, reviewCount } = useRandomNumber();
+
   if (isLoading) {
     return <div>loading</div>;
   }
@@ -33,6 +35,8 @@ export const ItemDetailContainer = () => {
         price={price}
         size={sizeOptions}
         color={colorOptions}
+        heartCount={heartCount}
+        reviewCount={reviewCount}
       />
     </>
   );
