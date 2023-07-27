@@ -14,12 +14,12 @@ import { CowDogHomeIcon } from "../CowDogHomeIcon";
 import { InputContainer } from "../../InputContainer/InputContainer";
 import { Button } from "../../Button";
 import { Link, useNavigate } from "react-router-dom";
+import { postLogout } from "../../../../api/loginApi";
 
 export const Headers = ({}) => {
   const navigate = useNavigate();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -40,8 +40,10 @@ export const Headers = ({}) => {
     };
   }, []);
 
-  const handleLogout =  () => {
-    window.alert("되겠냐??👿")
+  const handleLogout = () => {
+    // postLogout(token);
+    localStorage.removeItem("token");
+    window.location.reload();
   };
 
   const handleLogin = () => {
