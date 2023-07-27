@@ -1,4 +1,3 @@
-import { styled } from "styled-components";
 import {
   ItemDetailBubbleLayout,
   StItemBubbleArrow,
@@ -10,8 +9,8 @@ import { Button } from "../../../../components";
 
 export const ListItemBubble = ({
   imageUrl = "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/projects/163413022650162731.jpg?gif=1&w=180&h=180&c=c&webp=1",
-  brand = "브랜드",
-  name = "이름이름이름이름이름이름이름이름이름이름",
+  brand = "브랜드없음",
+  name = "이름없음",
   onClickFunction = () => {},
   noButton = false,
 }) => {

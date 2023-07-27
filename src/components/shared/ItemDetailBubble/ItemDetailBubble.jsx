@@ -18,12 +18,13 @@ export const ItemDetailBubble = ({
   imageUrl = "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/projects/163413022650162731.jpg?gif=1&w=180&h=180&c=c&webp=1",
   x = "0px",
   y = "0px",
-  price = "999,999,999",
+  price = "0",
   brand = "브랜드",
-  name = "이름이름이름이름이름이름이름이름이름이름",
+  name = "이름",
   onClickFunction = () => {},
   opacity = 1,
 }) => {
+  const formattedPrice = new Intl.NumberFormat().format(Number(price)); // 숫자로 변환 후 쉼표 찍기
   return (
     <>
       <ItemDetailBubbleLayout
@@ -38,7 +39,7 @@ export const ItemDetailBubble = ({
         <StItemBubbleText>
           <span className="brand">{brand}</span>
           <p className="name">{name}</p>
-          <span className="price">{price}원</span>
+          <span className="price">{formattedPrice}원</span>
         </StItemBubbleText>
         <StItemBubbleArrow>
           <HiChevronRight className="shevron" />
