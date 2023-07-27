@@ -1,12 +1,8 @@
 
 import axios from "axios";
-
-
-
 const baseUrl = process.env.REACT_APP_SERVER_API_URL;
 
-
-export const getItems = async () => { // 목록
+export const getItems = async () => { // 버블에서 목록 조회
     try {
         const { data } = await axios.get(`${baseUrl}/itempage`);
         console.log(data);
@@ -16,7 +12,7 @@ export const getItems = async () => { // 목록
     }
 }
 
-export const getHouseDetail = async (id) => { // 상세
+export const getHouseDetail = async (id) => { // 상세페이지 조회
     try {
         const { data } = await axios.get(`${baseUrl}/detail/${id}`);
         return data;
@@ -26,7 +22,7 @@ export const getHouseDetail = async (id) => { // 상세
 }
 
 
-export const postHousePost = async (post) => { // 사진전송
+export const postHousePost = async (post) => { // 사진전송 및 게시
     try {
         const token = localStorage.getItem("token");
         console.log('🐹게시요청');

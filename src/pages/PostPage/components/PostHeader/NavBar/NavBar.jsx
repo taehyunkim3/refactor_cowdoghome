@@ -10,7 +10,14 @@ export const NavBar = () => {
             {navItem}
           </NavItem>
         ) : (
-          <NavItem color="#828c94">{navItem}</NavItem>
+          <NavItem
+            color="#828c94"
+            onClick={() => {
+              alert("동영상 업로드는 구현 준비중입니다");
+            }}
+          >
+            {navItem}
+          </NavItem>
         );
       })}
     </NavBarBox>

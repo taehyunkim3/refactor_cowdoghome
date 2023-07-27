@@ -1,12 +1,11 @@
 import { styled } from "styled-components";
 
 export const HeaderBox = styled.div`
-  // width: 100%; //레이아웃 때문이 잠깐 주석처리 해놓았습니다 . 김태현
   height: calc(5em - 0.063em); // 기본 web
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  // justify-content: space-between;
+
   text-align: center;
   padding: 0 3.75em;
   box-sizing: content-box;
@@ -35,25 +34,7 @@ export const LogoContainer = styled.div`
 export const ButtonBox = styled.div`
   display: flex;
   align-items: center;
-  grid-column: 3;
-`;
-
-export const SignBtn = styled.button`
-  border: none;
-  background: none;
-  margin-top: 0.32em;
-  height: 49%;
-  font-size: 0.875em;
-  color: #2f3438;
-  border-right: 0.063em solid #eaedef;
-  line-height: 1.125em;
-  cursor: pointer;
-  &:last-child {
-    border-right: none;
-  }
-  @media (max-width: 768px) {
-    font-size: 0.6em;
-  }
+  grid-column: 4;
 `;
 
 export const PostButtonBox = styled.div`

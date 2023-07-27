@@ -1,7 +1,13 @@
 import { useContext, useRef, useState } from "react";
 import imageCompression from "browser-image-compression";
 
-import { TextBox, Camera, InputFileLayout } from "./style";
+import {
+  TextBox,
+  Camera,
+  InputFileLayout,
+  InputFileLayoutContainer,
+  ChangeFileLayout,
+} from "./style";
 import { MdPhotoCamera } from "react-icons/md";
 import { DraggableButtonInCard } from "../DraggableButtonInCard";
 import { PostPageContext } from "../../contexts/PostPageContext";
@@ -51,19 +57,7 @@ export const InputFile = ({}) => {
         </>
       ) : (
         <>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "20px",
-              width: "430px",
-              height: "430px",
-              backgroundColor: "#f7f9fa",
-              margin: "10px",
-            }}
-          >
+          <InputFileLayoutContainer>
             <InputFileLayout>
               {" "}
               <Camera>
@@ -71,7 +65,7 @@ export const InputFile = ({}) => {
               </Camera>
               <p className="bigText">사진을 끌어다놓아요 </p>
               <p className="smallText">1장만 업로드가 가능해요.</p>
-              <label for="file" className="pcload">
+              <label htmlFor="file" className="pcload">
                 PC에서 불러오기
               </label>
               <input
@@ -82,7 +76,7 @@ export const InputFile = ({}) => {
                 ref={fileUpload}
               />
             </InputFileLayout>
-          </div>
+          </InputFileLayoutContainer>
         </>
       )}
 
@@ -95,8 +89,8 @@ export const InputFile = ({}) => {
           placeholder="어떤 사진인지 짧은 소개로 시작해보세요."
         />
         {fileUrl && (
-          <InputFileLayout>
-            <label for="file" className="pcload">
+          <ChangeFileLayout>
+            <label htmlFor="file" className="pcload">
               사진 다시 불러오기
             </label>
             <input
@@ -106,7 +100,7 @@ export const InputFile = ({}) => {
               onChange={onChangeImage}
               ref={fileUpload}
             />
-          </InputFileLayout>
+          </ChangeFileLayout>
         )}
       </TextBox>
     </>
